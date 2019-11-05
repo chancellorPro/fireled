@@ -1,0 +1,4 @@
+export const AWARD_CREATE = 'AWARD_CREATE';
+export const AWARD_CREATED = 'AWARD_CREATED';
+export const AWARD_DELETE = 'AWARD_DELETE';
+export const CLOSE_AWARD_MODAL = 'CLOSE_AWARD_MODAL';

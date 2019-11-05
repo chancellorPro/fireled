@@ -1,0 +1,74 @@
+.module-users {
+  .list-thumbnail {
+    height: 30px;
+  }
+
+  .user-info {
+    label {
+      margin: 0;
+    }
+
+    span.no-wrap {
+      line-height: 1em;
+    }
+
+    & > div {
+      margin-bottom: 6px;
+    }
+  }
+
+  .table {
+    overflow: hidden;
+
+    th {
+      input[type="checkbox"] {
+        width: 28px;
+        display: block;
+      }
+    }
+
+    td {
+      &.actions {
+        white-space: normal;
+      }
+    }
+  }
+
+  .pc1-migrations-btn {
+    position: absolute;
+    right: 6px;
+    top: 0px;
+  }
+
+  .filter-from,
+  .filter-to {
+    width: 49%;
+    display: inline-block;
+  }
+}
+
+.user-debug-block {
+  width: auto;
+  display: inline-block;
+}
+
+td.actions {
+  max-width: 100px;
+  a {
+    margin-top: 5px;
+    display: inline-block;
+  }
+}
+
+.placement-action-row {
+  background: #e3f0fe;
+  display: inline-block;
+  width: 100%;
+  padding: 10px 5px;
+}
+
+.user-debug-content {
+  .form-group {
+    margin: 0;
+  }
+}

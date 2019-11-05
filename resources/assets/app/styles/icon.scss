@@ -1,0 +1,118 @@
+.icon {
+
+  /**
+   * Coin and cash icons in the inputs at the assets grid
+   */
+  &.xp,
+  &.cash,
+  &.coin {
+    background-repeat: no-repeat;
+    background-size: 20px;
+    background-position-y: 50%;
+    background-position-x: 2px;
+    padding-left: 24px;
+  }
+
+  &.cash {
+    background-image: url("images/cash.png");
+  }
+
+  &.coin {
+    background-image: url("images/coin.png");
+  }
+
+  &.xp {
+    background-image: url("images/user_actions/xp-icon.png");
+  }
+  
+  /**
+   * input.icon.cash
+   * input.icon.coin
+   */
+  @at-root input#{&} {
+    &.xp,
+    &.cash,
+    &.coin {
+      text-align: right;
+      min-width: 70px;
+    }
+  }
+}
+
+.tag-icon {
+    background-repeat: no-repeat;
+    background-size: 20px;
+    background-position-y: 50%;
+    background-position-x: 50%;
+    padding-left: 30px;
+    display: inline-block;
+    height: 30px;
+    
+    &.animation {
+        background-image: url("images/animation.png");
+    }
+    
+    &.copy {
+        background-image: url("images/copy.png");
+    }
+    
+    &.cash {
+        background-image: url("images/cash.png");
+    }
+
+    &.coin {
+        background-image: url("images/coin.png");
+    }
+}
+
+.user-actions-icon {
+  background-repeat: no-repeat;
+  background-size: 16px;
+  background-position-y: 50%;
+  background-position-x: 50%;
+  padding-left: 16px;
+  display: inline-block;
+  height: 16px;
+
+  &.asset {
+    background-image: url("images/user_actions/asset.png");
+  }
+
+  &.cash {
+    background-image: url("images/user_actions/cash-icon.png");
+  }
+
+  &.earn-spent {
+    background-image: url("images/user_actions/earn-spent-icon.png");
+  }
+
+  &.load-tracking {
+    background-image: url("images/user_actions/load-tracking-icon.png");
+  }
+
+  &.pc {
+    background-image: url("images/user_actions/pc-icon.gif");
+  }
+
+  &.xp {
+    background-image: url("images/user_actions/xp-icon.png");
+  }
+}
+
+.background {
+    background-size: auto 60%;
+    background-repeat: no-repeat;
+    &.webgl {
+        background-image: url("images/webgl_icon.png");
+        background-size: auto 40%;
+    }
+    &.android {
+        background-image: url("images/green-android-icon.png");
+    }
+    &.ios {
+        background-image: url("images/ios-icon.png");
+    }
+    &.preview {
+      background-image: url("images/preview-icon.png");
+    }
+}

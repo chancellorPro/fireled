@@ -1,0 +1,100 @@
+.module-action-type {
+  .action-type-states {
+    ul {
+      li {
+        ul {
+          .row {
+            & > div {
+              label {
+                display: block;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .group {
+      border-bottom: 1px solid #dad9d9;
+      margin-bottom: 6px;
+      padding-bottom: 6px;
+
+      &:last-child {
+        border: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      .name {
+        text-align: right;
+        padding-bottom: 6px;
+
+        span {
+          border-bottom: 1px solid #eee;
+          font-weight: 700;
+        }
+      }
+
+      label {
+        span {
+          font-weight: normal;
+        }
+      }
+    }
+
+    .controls {
+      position: absolute;
+      top: 0;
+      right: 0;
+
+      .collapse-link,
+      .close {
+        color: #000;
+        padding: 4px;
+        opacity: .2;
+
+        &:hover {
+          cursor: pointer;
+          opacity: .5;
+        }
+      }
+    }
+  }
+
+  .action-type-state {
+    border: 1px solid #dad9d9;
+    padding: 6px;
+    margin: 6px 0;
+    background: #eee;
+  }
+
+  .action-type-state label.control-label {
+    padding-top: 0;
+  }
+  .action-type-state label {
+    word-wrap: break-word;
+  }
+  .action-type-state input[type=checkbox] {
+    margin: 0;
+  }
+
+  .action-type-state {
+    .collapse-link {
+      .fa:before {
+        content: "";
+      }
+    }
+
+    &.down {
+      .collapse-link {
+        .fa:before {
+          content: "";
+        }
+      }
+
+      & > ul {
+        display: none;
+      }
+    }
+  }
+}

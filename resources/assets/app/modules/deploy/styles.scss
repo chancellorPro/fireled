@@ -1,0 +1,33 @@
+.deploy-status {
+  .deploy-dev-stage {
+    color: green;
+  }
+  .deploy-stage-dev {
+    color: yellow;
+  }
+  .deploy-stage-live {
+    color: darkred;
+  }
+}
+
+.deploy-chain {
+  background: #d7e3f2;
+}
+
+.show-dependency {
+  position: absolute;
+  left: -7px;
+}
+
+.deploy-chain-block {
+  background: #fff;
+  div {
+    margin: 0 40px;
+  }
+}
+
+.depend-ids {
+  display: inline-block;
+  width: 100%;
+  overflow: auto;
+}

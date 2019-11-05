@@ -1,0 +1,26 @@
+.btn {
+  &.close {
+    span {
+      display: block;
+      line-height: 12px;
+    }
+  }
+}
+
+.multiline-btns .btn{
+    margin-top: 5px;
+}
+
+.loading {
+  .btn {
+    position: relative;
+
+    &:after {
+      content: 'Loading...';
+      position: absolute;
+      left: 0;
+      background: inherit;
+      width: 100%;
+    }
+  }
+}

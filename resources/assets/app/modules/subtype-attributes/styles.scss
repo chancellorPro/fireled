@@ -1,0 +1,43 @@
+.table > tbody > tr > td.subtype-attribute.active
+{
+  background: #d1ffd699;
+}
+
+.atributes-table tr td {
+  border-left: 1px solid #ddd;
+  padding: 2px !important;
+  text-align: center;
+  vertical-align: middle !important;
+}
+
+.atributes-table th.subtype-col {
+  width: 150px;
+}
+.atributes-table th.attribute-col {
+  padding: 2px !important;
+}
+
+.atributes-table th.attribute-col span.even{
+  background-color: #ececec;
+}
+
+.atributes-table td.even{
+  background-color: #ececec;
+}
+
+.atributes-table {
+  max-width: 1500px;
+}
+
+.asset-type-access {
+  h4 {
+    text-align: center;
+    border-bottom: 1px solid #eee;
+    margin-top: 20px;
+    padding-bottom: 10px;
+  }
+
+  label.control-label {
+    text-transform: capitalize;
+  }
+}

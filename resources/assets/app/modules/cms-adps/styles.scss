@@ -1,0 +1,131 @@
+.cms-adp {
+    span.close-release {
+        border-bottom: 2px solid red;
+    }
+    .table {
+        div.pre-wrap-text{
+            white-space: pre-wrap;
+            text-align: left
+        }
+        td.actions {
+            width: 80px;
+            .action {
+                display: inline-block;
+                vertical-align: top;
+            }
+        }
+        .description {
+            max-width: 250px;
+            word-wrap: break-word;
+        }
+        .wanted {
+            border-top: 3px dashed #7e91f4;
+            border-bottom: 3px dashed #7e91f4;
+            background: #cfdef4;
+        }
+        .parent {
+            font-size: 25px;
+            color: #808080;
+        }
+        .adp-status {
+            min-width: 120px;
+        }
+    }
+
+    .adp-task-artists,
+    .adp-task-statuses,
+    .adp-categories,
+    .adp-task-own {
+        td, th {
+            padding: 0;
+        }
+
+        a {
+            display: block;
+            padding: 0;
+
+            &.btn {
+                display: inline-block;
+            }
+        }
+        a.add-button {
+            margin-top: 5px;
+            display: block;
+            padding: 5px 10px;
+
+            &.btn {
+                display: inline-block;
+            }
+        }
+    }
+
+    .adp-categories {
+        .active-category {
+            background: #e0e0e0;
+            border: 2px solid #d4d4d4;
+        }
+    }
+    .tasks-list {
+        .active-task {
+            background: #e0e0e0;
+            border: 2px solid #d4d4d4;
+        }
+    }
+    .total-by-status-table {
+        tr th {
+            padding: 10px;
+        }
+    }
+    .uploaded {
+        background: #d0ffd0;
+    }
+  
+    /*STATUS_NEW*/
+    .status-1 {
+        background: #ffffd0;
+    }
+    /*STATUS_BOOKED*/
+    .status-2 {
+        background: #ffffd0;
+    }
+    /*STATUS_ASSIGNED*/
+    .status-3 {
+        background: #ffffff;
+    }
+    /*STATUS_IN_PROGRESS*/
+    .status-4 {
+        background: #d0e0ff;
+    }
+    /*STATUS_UPDATED_BUNDLE*/
+    .status-5 {
+        background: #c9fe90;
+    }
+    /*STATUS_COMMENTS*/
+    .status-6 {
+        background: #06f5fe;
+    }
+    /*STATUS_UPDATED_SOURCE*/
+    .status-7 {
+        background: #abc095;
+    }
+
+    /*PRIORITY_NOW*/
+    .priority-1 {
+        color: #000;
+        background: #ff848e;
+    }
+    /*PRIORITY_HIGHT*/
+    .priority-2 {
+        background: #ffd0d0;
+    }
+    /*PRIORITY_NORMAL*/
+    .priority-3 {
+        background: #ffffd0;
+    }
+    /*PRIORITY_LOW*/
+    .priority-4 {
+        background: #ffffff;
+    }
+
+
+}

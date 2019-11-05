@@ -1,0 +1,48 @@
+{
+    "name": "stockworker",
+    "version": "1.0.0",
+    "description": "Scripts and styles collector",
+    "main": "index.js",
+    "directories": {
+        "test": "tests"
+    },
+    "scripts": {
+        "build": "webpack --mode production --config webpack.config.js --bail",
+        "dev": "webpack --mode development --bail",
+        "start": "webpack --mode development --watch --bail",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "@babel/core": "^7.2.0",
+        "@babel/preset-env": "^7.2.0",
+        "babel-loader": "^8.0.4",
+        "css-loader": "^2.0.0",
+        "file-loader": "^2.0.0",
+        "mini-css-extract-plugin": "^0.5.0",
+        "node-sass": "^4.10.0",
+        "optimize-css-assets-webpack-plugin": "^5.0.1",
+        "sass-loader": "^7.1.0",
+        "style-loader": "^0.23.1",
+        "uglifyjs-webpack-plugin": "^2.0.1",
+        "url-loader": "^1.1.2",
+        "webpack": "^4.27.1",
+        "webpack-cli": "^3.1.2"
+    },
+    "dependencies": {
+        "blueimp-md5": "^2.10.0",
+        "bootstrap": "^3.4.0",
+        "bootstrap-colorpicker": "^2.5.3",
+        "cleave.js": "^1.4.7",
+        "dotenv": "^6.2.0",
+        "dropzone": "^5.5.1",
+        "font-awesome": "^4.7.0",
+        "jquery": "^2.2.4",
+        "moment": "^2.24.0",
+        "raven-js": "^3.27.0",
+        "sortablejs": "^1.8.1",
+        "sticky-table-headers": "^0.1.24",
+        "tablesorter": "^2.31.1"
+    }
+}

@@ -1,0 +1,96 @@
+.table {
+
+  &.word-break td {
+    word-break: break-all;
+  }
+
+  /**
+   * Column sizes
+   */
+  th, td {
+    &.id {
+      width: 5%;
+    }
+
+    &.actions {
+      width: 10%;
+    }
+
+    &.xs {
+      width: 5%;
+    }
+  }
+
+  &.table-multiple-rows {
+    .no-border {
+      th, td {
+        border-top: none;
+      }
+    }
+  }
+
+  .x_panel {
+    padding: 4px;
+
+    .x_title {
+      border: none;
+      padding: 0;
+      margin: 0;
+    }
+  }
+  .striped {
+      background-color: #f6f6f6;
+  }
+
+  &.chain-table {
+    background: none;
+    color: #596066;
+    margin: 0;
+    td {
+      border: none;
+      padding: 0 0 0 2px;
+    }
+
+  }
+
+  &.table-inverse {
+    display: flex;
+
+    thead {
+      tr {
+        padding-right: 40px;
+      }
+    }
+
+    tr {
+      display: flex;
+      flex-direction: column;
+
+      td, th {
+        height: 50px;
+        padding: 10px;
+        border: none;
+        position: relative;
+
+        .award-info {
+          position: absolute;
+          top: 0;
+          right: -50px;
+          padding: 0;
+          margin: 0;
+          width: auto;
+        }
+      }
+    }
+  }
+}
+
+tr.changed {
+  td:first-child, td:last-child {
+    background: #26b99a4d;
+  }
+}
+
+tr.default-row-values {
+  background: #337ab7;
+}
