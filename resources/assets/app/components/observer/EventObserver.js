@@ -34,15 +34,7 @@ class EventObserver {
         this._log('unsubscribe', event);
 
         if (!!this.subscribers[event]) {
-            if(!!state) {
-                this.subscribers[event] = this.subscribers[event].filter(handler => handler !== state);
-            } else {
-                /**
-                 * Delete all subscribers
-                 */
-                this.subscribers[event] = [];
-            }
-
+            this.subscribers[event] = this.subscribers[event].filter(handler => handler !== state);
         }
     }
 

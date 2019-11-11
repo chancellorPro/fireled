@@ -21,10 +21,19 @@
     background-image: url("images/coin.png");
   }
 
-  &.xp {
-    background-image: url("images/user_actions/xp-icon.png");
+  &.public-head {
+    background-repeat: no-repeat;
+    background-image: url("images/header.jpg");
+    height: 205px;
+    width: 2500px;
+
+
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translateY(-50%) translateX(-50%);
   }
-  
+
   /**
    * input.icon.cash
    * input.icon.coin
@@ -65,40 +74,6 @@
     }
 }
 
-.user-actions-icon {
-  background-repeat: no-repeat;
-  background-size: 16px;
-  background-position-y: 50%;
-  background-position-x: 50%;
-  padding-left: 16px;
-  display: inline-block;
-  height: 16px;
-
-  &.asset {
-    background-image: url("images/user_actions/asset.png");
-  }
-
-  &.cash {
-    background-image: url("images/user_actions/cash-icon.png");
-  }
-
-  &.earn-spent {
-    background-image: url("images/user_actions/earn-spent-icon.png");
-  }
-
-  &.load-tracking {
-    background-image: url("images/user_actions/load-tracking-icon.png");
-  }
-
-  &.pc {
-    background-image: url("images/user_actions/pc-icon.gif");
-  }
-
-  &.xp {
-    background-image: url("images/user_actions/xp-icon.png");
-  }
-}
-
 .background {
     background-size: auto 60%;
     background-repeat: no-repeat;
@@ -111,8 +86,5 @@
     }
     &.ios {
         background-image: url("images/ios-icon.png");
-    }
-    &.preview {
-      background-image: url("images/preview-icon.png");
     }
 }

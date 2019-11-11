@@ -138,22 +138,6 @@ export default class {
         }
     }
 
-    /**
-     * Set callback that will be call after close modal
-     *
-     * @param callback
-     */
-    onClose(callback) {
-        this._onCloseCallback = callback;
-        return this;
-    }
-
-    _onClose() {
-        if (typeof this._onCloseCallback === "function") {
-            this._onCloseCallback();
-        }
-    }
-
     modal(content) {
         /**
          * Data attributes
@@ -167,7 +151,7 @@ export default class {
         }
 
         let html = $(`
-            <div id="${ this._getID() }" class="modal fade" role="dialog" aria-hidden="true" ${dataset.join(' ')}>
+            <div id="${ this._getID() }" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" ${dataset.join(' ')}>
                 <div class="modal-dialog modal-dialog-centered ${this._getSize()}">
                     <div class="modal-content"></div>
                 </div>
@@ -187,16 +171,6 @@ export default class {
             .append(this._getBody())
             .append(this._getFooter());
 
-        html.find('.select2').select2();
-
-        html.find('.datepicker')
-            .datetimepicker({
-                format: 'yyyy-mm-dd',
-                autoclose: true,
-                minView: '2'
-        });
-        $('.tablestickyheader').stickyTableHeaders();
-
         modalsContainer.append(html);
 
         /**
@@ -215,10 +189,6 @@ export default class {
                 $('#' + this._getID())
                     .off('hidden.bs.modal')
                     .remove();
-                /**
-                 * Call the onClose callback
-                 */
-                this._onClose();
             })
             .modal();
     }

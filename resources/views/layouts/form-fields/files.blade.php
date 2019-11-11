@@ -25,7 +25,7 @@
                            href="{{ Storage::url($file->{$url}) }}">
                         </a>
                         @endif
-                        @if ($type == 'file')
+                        @if ($type == 'file' && isset($fileName))
                             <span>
                                 {{ $file->{$fileName} }}
                             </span>

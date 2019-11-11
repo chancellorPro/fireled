@@ -30,11 +30,6 @@ export default function(e) {
                         observer.dispatch(this.dataset.event, response);
                     }
                 })
-                .onClose(() => {
-                    if (!!this.dataset.closeEvent) {
-                        observer.dispatch(this.dataset.closeEvent, response);
-                    }
-                })
                 .modal(response);
         })
         .complete(() => {

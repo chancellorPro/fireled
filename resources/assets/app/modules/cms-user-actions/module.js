@@ -1,8 +1,11 @@
-import {CASH} from "modules/cms-user-actions/constants";
-import {COIN} from "modules/cms-user-actions/constants";
-import {ASSET} from "modules/cms-user-actions/constants";
+import {changeTab} from "./handlers/changeTab";
 
 $(document)
+
+    /**
+     * Change url on tab change
+     */
+    .on('click', '.deploy-tabs .nav-link', changeTab)
 
     /**
      * Set cursor to parent node
@@ -11,22 +14,6 @@ $(document)
         if($(this).find('.hidden-wrapper').length) {
             $(this).css('cursor', 'pointer');
         }
-    })
-
-    /**
-     * Filter select options by selected source
-     */
-    .on('change', '#filter_source', function () {
-        const sourceVal = $(this).val();
-        $("#filter_action").select2({
-            matcher: function (params, data) {
-                if (sourceVal !== 'user_debug' && $.inArray(data.id, [CASH, COIN, ASSET]) > -1) {
-                    return null;
-                } else {
-                    return data;
-                }
-            }
-        });
     })
 
     /**
@@ -45,3 +32,4 @@ $(document)
             wrapper.addClass('open')
         }
     });
+

@@ -22,7 +22,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::middleware(['auth'])->group(function () {
 
     Route::get('telegram', 'ActionLog\IndexController@sendMessage')->name('telegram');
-    Route::resource('product', 'Product\IndexController');
+    Route::resource('product', 'Product\IndexController')->except('update');
+    Route::post('product/update/{id}', 'Product\IndexController@update')->name('product.update');
     Route::resource('user', 'User\IndexController');
 
     Route::get('export', 'ActionLog\IndexController@getExportData')->name('export');

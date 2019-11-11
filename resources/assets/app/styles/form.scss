@@ -5,23 +5,3 @@ select {
     font-weight: bold;
   }
 }
-
-input[type=checkbox] {
-  box-shadow: none;
-  margin: 0;
-}
-
-.disable {
-  a,
-  button,
-  textarea,
-  select,
-  input {
-    pointer-events: none;
-  }
-
-  .close,
-  .fa-plus {
-    display: none;
-  }
-}

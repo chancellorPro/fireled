@@ -6,6 +6,6 @@ import {SEARCH_USER_ASSETS} from "../constants";
  */
 export default function () {
     observer.subscribe(SEARCH_USER_ASSETS, data => {
-        $('#search-assets-container').replaceWith(data);
+        $('#search-assets-container').html(data);
     });
 }

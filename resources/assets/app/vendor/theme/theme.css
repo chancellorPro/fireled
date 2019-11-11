@@ -2,121 +2,89 @@
 html , body{
  height:100%;
 }
-
+ 
 .full-width {
  width:100%;
  }
 
-.income{
-    background: #1abb9c;
-    text-align: left;
-    color: #fff;
-    font-size: 20px;
-    font-weight: bold;
-}
-
-.new-row {
-    background: #acfaff;
-}
-.instance_list {
-    word-break: break-all;
+.asset-box{
+    position: relative;
+    width: 174px;
+    height: 190px;
     overflow: hidden;
-    width: 800px;
+    margin: 10px;
+    padding: 3px;
+    border: 1px solid silver;
+    word-wrap: break-word;
+}
+
+.currency{
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    width: 20px;
+    height: 20px;
+}
+
+.public-pagination .pagination{
+    margin: 0 !important;
+}
+
+.header_wrapper{
+    position: relative;
     display: block;
-    height: 0;
-    cursor: pointer;
-}
-.table-inverse tr.changed td{
-    background: #26b99a4d;
-}
-.toggle_ids{
-    cursor: pointer;
-    text-decoration: underline;
+    height: 205px;
+    background: #b8dbf3;
+    width: 100%;
+    overflow: hidden;
 }
 
-.fixed_column{
-    position: fixed;
+.asset-box .image{
+    width: 166px;
+    height: 150px;
+    display: block;
+    text-align: center;
 }
 
-.stats-price {
-    white-space: nowrap;
+.left_col_public {
+    background: #f7f7f7;
 }
-.stats-price i {
-    vertical-align: middle;
+
+.public input[type="radio"] {
+    vertical-align: sub;
+}
+
+.left_col_public .left_col{
+    padding: 10px;
+    background: #f7f7f7;
+}
+
+.left_col_public ul{
+    background: #fff;
+}
+
+.left_col_public .nav.side-menu > li > a,
+.left_col_public .nav.side-menu > li > a:hover,
+.left_col_public .nav > li > a:focus{
+    color: #536A7F !important;
+}
+
+.left_col_public .nav.side-menu > li.active > a {
+    padding-left: 20px;
+    background: #e7e7e7;
 }
 
 .full-height{
  height:100%;
  }
 
-.delta_time > div,
-.delta_time > .row > div {
-    padding: 0;
-}
-
-.delta_time > .row {
-    padding: 10px;
-}
-
-.template-checkbox {
-    width: 35px;
-}
-
-.date-header {
-    text-align: center;
-    border-left: 1px solid silver;
-}
-
 .table thead tr th,
 .table tbody tr td{
     border-right: 1px solid #f3f3f3;
-}
-
-.boxed label.control-label, textarea, select {
-    width: 100% !important;
-}
-
-.short-label label {
-    width: 20px;
-}
-
-.side-box {
-    position: fixed !important;
-    z-index: 999999;
-    right: -100%;
-    bottom: 0;
-}
+} 
 
 .table thead.clear tr th {
     border: none;
-}
-
-.show-hide {
-    position: absolute;
-    cursor: pointer;
-    font-size: 21px;
-    font-weight: 700;
-    line-height: 1;
-    text-shadow: 0 1px 0 #fff;
-    filter: alpha(opacity=20);
-    opacity: .5;
-}
-.open-box {
-    border-radius: 3px;
-    color: #fff;
-    left: -36px;
-    background: #4179bb;
-    padding: 60px 0;
-}
-.close-box {
-    border-radius: 3px;
-    color: #fff;
-    background: #4179bb;
-    padding: 60px 0;
-    right: -10px;
-}
-.show-hide:hover {
-    opacity: 1;
 }
 
 .daterangepicker .ranges li {
@@ -250,6 +218,16 @@ html , body{
 .left_col {
     background: #43667B
 }
+.left_col_public{
+    min-height: 100%;
+    width: 270px;
+    padding: 0;
+    z-index: 9999;
+    position: absolute
+}
+.public.right_col{
+    margin-left: 270px !important;
+}
 .nav-sm .container.body .col-md-3.left_col {
     min-height: 100%;
     width: 70px;
@@ -280,8 +258,8 @@ html , body{
     display: none
 }
 .nav-sm .navbar.nav_title a i {
-    font-size: 30px;
-    margin: 10px 0 0 5px;
+    font-size: 27px;
+    margin: 13px 0 0 3px
 }
 .site_title i {
     border: 1px solid #EAEAEA;
@@ -291,6 +269,11 @@ html , body{
 .nav-sm .main_container .top_nav {
     display: block;
     margin-left: 70px;
+    z-index: 2
+}
+.nav-sm .main_container .public.top_nav {
+    display: block;
+    margin-left: 270px;
     z-index: 2
 }
 .nav-sm .nav.side-menu li a {
@@ -382,7 +365,7 @@ html , body{
 }
 .fa-bitcoin-circle:before {
     content:"\f15a";
-    vertical-align: middle;
+    vertical-align: middle; 
     text-align: center;
     font-size: 15px;
 }
@@ -625,8 +608,8 @@ body .container.body .right_col {
     background: #D9DEE4
 }
 body {
-    color: #000000;
-    background: #2A3F54;
+    color: #000;
+    background: #f7f7f7;
     font-family: "Helvetica Neue", Roboto, Arial, "Droid Sans", sans-serif;
     font-size: 13px;
     font-weight: 400;
@@ -828,12 +811,12 @@ a:focus {
 }
 .top_nav .navbar-right {
     margin: 0;
-    width: 150px;
     float: right
 }
 .top_nav .navbar-right li {
     display: inline-block;
     float: right;
+    white-space: nowrap;
     position: static
 }
 @media (min-width: 480px) {
@@ -2333,6 +2316,11 @@ a.star {
 .compose .compose-footer {
     padding: 10px
 }*/
+
+.left_col_public .nav.side-menu > li > a {
+    padding-left: 17px;
+}
+
 .editor.btn-toolbar {
     zoom: 1;
     background: #F7F7F7;
@@ -2627,14 +2615,14 @@ a.btn-danger {
     height: 30px;
     text-align: center;
     padding: 6px 0;
-    border-radius: 15px;
+    border-radius: 15px; 
 }
 .btn-download {
     width: 30px;
     height: 30px;
     text-align: center;
     padding: 6px 0;
-    border-radius: 15px;
+    border-radius: 15px; 
     margin-top: 8px;
 }
 
@@ -2687,11 +2675,6 @@ textarea:focus {
     background-color: #f9f9f9;
     border: 1px solid #fff
 }
-
-.brake-word {
-    word-break: break-word;
-}
-
 .bs-glyphicons .glyphicon {
     margin-top: 5px;
     margin-bottom: 10px;
@@ -3236,6 +3219,14 @@ ul.project_files li {
 ul.project_files li a i {
     width: 20px
 }
+
+.categories .nav.side-menu li a{
+    font-size: 22px;
+    text-align: left !important;
+    color: #536A7F;
+    word-wrap: break-word;
+}
+
 .project_detail p {
     margin-bottom: 10px
 }
@@ -3469,7 +3460,7 @@ ul.project_files li a i {
     width: 100%;
     display: inline-block;
     margin: 0;
-}
+} 
 
 .embed-group {
     position: relative;
@@ -3730,6 +3721,7 @@ form:after {
     visibility: hidden
 }
 .login_content {
+    background: #2A3F54;
     margin: 0 auto;
     padding: 25px 0 0;
     position: relative;
@@ -4465,7 +4457,7 @@ ul.notifications {
 table thead .checkbox { margin-top:-7px;margin-top:-21px; }
 table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
 */
-
+			
 .daterangepicker.xdisplay { width:228px; }
 
 .dataTables_wrapper > .row{
@@ -4482,17 +4474,6 @@ table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
 }
 .delete-file:hover, .delete-file:focus {
     color: #ff2400;
-}
-
-.download-file {
-    position: absolute;
-    color: #ce0000;
-    text-shadow:  0 0 8px #FFF;
-    left: 1px;
-    top: -7px;
-    width: 28px;
-    height: 27px;
-    font-size: 15px;
 }
 
 .file-box {
@@ -4529,13 +4510,13 @@ table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
 }
 
 .carousel-control {
-
+    
   width: 30px;
   height: 30px;
   border-radius: 20px;
   background: #169F85;
   top: 33%;
-  font-size: 20px;
+  font-size: 20px;    
 }
 
 .carousel-control.right {
@@ -4554,7 +4535,7 @@ th.rotate45 {
 }
 
 th.rotate45 > div {
-  transform:
+  transform: 
     translate(5px, 51px)
     rotate(315deg);
   width: 30px;
@@ -4590,7 +4571,7 @@ span.default {
   -ms-animation: pulse 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
   animation: pulse 1.25s infinite cubic-bezier(0.66, 0, 0, 1);
 }
-.pulse-button:hover
+.pulse-button:hover 
 {
   -webkit-animation: none;-moz-animation: none;-ms-animation: none;animation: none;
 }

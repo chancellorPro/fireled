@@ -3,12 +3,15 @@
 namespace App\Http\Controllers\Product;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Product\ProductRequest;
 use App\Models\Product;
+use App\Models\ProductFile;
+use App\Services\FileService;
 use App\Traits\FilterBuilder;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
 
 /**
@@ -34,9 +37,10 @@ class IndexController extends Controller
      */
     public function index(Request $request)
     {
+
         $data = $this->applyFilter(
             $request,
-            Product::with('product_ref')->oldest('products.id')
+            Product::oldest('id')
         )->get();
 
         return view('product.index', [
@@ -47,23 +51,53 @@ class IndexController extends Controller
     }
 
     /**
-     * Product filter
+     * Save new product
      *
-     * @param Request $request
-     * @param $builder
-     * @return mixed
+     * @param Request $request Request
+     *
+     * @return JsonResponse
      */
-    private function applyParentIdFilter(Request $request, $builder)
+    public function store(Request $request)
     {
-        $product_id = $request->get('parent_id');
+        $product = Product::create($request->all());
 
-        if (!empty($product_id)) {
-            $builder
-                ->leftJoin('products as p', 'products.id', '=', 'p.parent_product')
-                ->where('p.id', $product_id);
-        }
+        $productFiles = [];
+        $this->saveFile(
+            $productFiles,
+            $request->file('preview'),
+            config('presets.adp_file_types.animation'),
+            'public/Product/' . $product->id
+        );
+        $product->productFiles()->saveMany($productFiles);
 
-        return $builder;
+        pushNotify('success', __('Product') . ' ' . __('common.action.added'));
+
+        return redirect()->route('product.edit', ['id' => $product->id]);
+    }
+
+    /**
+     * Update product
+     *
+     * @param Request $request Request
+     * @param integer $id ID
+     *
+     * @return JsonResponse
+     */
+    public function update(Request $request, int $id)
+    {
+        $product = Product::findOrFail($id);
+        $product->update($request->all());
+
+        $productFiles = [];
+        $this->saveFile(
+            $productFiles,
+            $request->file('preview'),
+            config('presets.adp_file_types.animation'),
+            'public/Product/' . $product->id
+        );
+        $product->productFiles()->saveMany($productFiles);
+
+        return redirect()->back();
     }
 
     /**
@@ -73,30 +107,9 @@ class IndexController extends Controller
      */
     public function create()
     {
-        $parentIds = Product::selectRaw('distinct parent_product')->get()->pluck('parent_product')->toArray();
-
         return view('product.create', [
-            'products'  => Product::whereNotIn('products.id', array_filter($parentIds))->get(),
-            'boxes'     => config('presets.boxes'),
-            'colors'    => config('presets.color'),
-            'materials' => config('presets.material'),
+            'products'  => Product::all(),
         ]);
-    }
-
-    /**
-     * Save new product
-     *
-     * @param ProductRequest $request Request
-     *
-     * @return JsonResponse
-     */
-    public function store(ProductRequest $request)
-    {
-        Product::create($request->all());
-
-        pushNotify('success', __('Product') . ' ' . __('common.action.added'));
-
-        return $this->success();
     }
 
     /**
@@ -108,31 +121,25 @@ class IndexController extends Controller
      */
     public function edit(int $id)
     {
-        $parentIds = Product::selectRaw('distinct parent_product')->get()->pluck('parent_product')->toArray();
-
         return view('product.edit', [
             'model'     => Product::find($id),
-            'products'  => Product::whereNotIn('products.id', array_filter($parentIds))->get(),
-            'boxes'     => config('presets.boxes'),
-            'colors'    => config('presets.color'),
-            'materials' => config('presets.material'),
+            'products'  => Product::all(),
         ]);
     }
 
     /**
-     * Update product
+     * Edit product view
      *
-     * @param ProductRequest $request Request
      * @param integer $id ID
      *
-     * @return JsonResponse
+     * @return Factory|View
      */
-    public function update(ProductRequest $request, int $id)
+    public function show($id)
     {
-        $resource = Product::findOrFail($id);
-        $resource->update($request->all());
-
-        return $this->success();
+        return view('product.edit', [
+            'model'     => Product::find($id),
+            'products'  => Product::all(),
+        ]);
     }
 
     /**
@@ -147,6 +154,30 @@ class IndexController extends Controller
         Product::destroy($id);
 
         return $this->success();
+    }
+
+    /**
+     * Save file
+     *
+     * @param $productFiles
+     * @param mixed $file File
+     * @param mixed $type Type
+     * @param mixed $folder Folder
+     *
+     * @return void
+     */
+    private function saveFile(&$productFiles, $file, $type, $folder)
+    {
+        if ($file) {
+            $ext           = FileService::getFileExt($file);
+            $path          = FileService::uploadFile($file, $folder, uniqid() . $ext);
+            $productFiles[] = new productFile([
+                'name'      => $file->getClientOriginalName(),
+                'type'      => $type,
+                'url'       => $path,
+                'file_hash' => hash_file('md5', Storage::path($path))
+            ]);
+        }
     }
 
     /**

@@ -2,9 +2,9 @@
 
 namespace App\Models;
 
+use App\Models\ProductFile;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * Class Product
@@ -24,31 +24,18 @@ class Product extends Model
      */
     protected $fillable = [
         'name',
+        'price',
         'description',
-        'box_id',
-        'box_size',
-        'box_weight',
-        'parent_product',
     ];
 
     /**
-     * Product relation
+     * CmsAdpFile relation
      *
-     * @return BelongsTo
+     * @return HasMany
      */
-    public function product_ref()
+    public function productFiles()
     {
-        return $this->belongsTo(Product::class, 'parent_product');
-    }
-
-    /**
-     * Product relation
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function childProducts()
-    {
-        return $this->hasMany(Product::class, 'parent_product', 'id');
+        return $this->hasMany(ProductFile::class);
     }
 
 }

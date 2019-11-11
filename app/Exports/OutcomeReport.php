@@ -44,15 +44,6 @@ class OutcomeReport implements FromCollection, WithHeadings
             ->whereBetween('action_log.date', [$this->from, $this->to])
             ->where(['income' => $this->income]);
 
-
-        $parentIds = Product::selectRaw('distinct parent_product')->get()->pluck('parent_product')->toArray();
-
-        if($this->hasParent) {
-//            $builder->whereNull('p.parent_product');
-        } else {
-            $builder->whereNotIn('p.id', array_filter($parentIds));
-        }
-
         return $builder->orderBy('c.id')->groupBy('c.id', 'action_log.product_id')->get();
     }
 }

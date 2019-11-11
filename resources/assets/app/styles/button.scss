@@ -10,17 +10,3 @@
 .multiline-btns .btn{
     margin-top: 5px;
 }
-
-.loading {
-  .btn {
-    position: relative;
-
-    &:after {
-      content: 'Loading...';
-      position: absolute;
-      left: 0;
-      background: inherit;
-      width: 100%;
-    }
-  }
-}

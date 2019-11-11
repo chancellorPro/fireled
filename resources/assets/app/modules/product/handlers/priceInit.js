@@ -9,7 +9,7 @@ export default function() {
         prefix: '$ ',
         rawValueTrimPrefix: true,
         onValueChanged: function (e) {
-            let value = Math.round(+e.target.rawValue * 100);
+            let value = parseInt(parseFloat(e.target.rawValue) * 100);
             let productPrice = $(this.element).closest('td').find('.product-price');
 
             if (value !== parseInt(productPrice.val())) {

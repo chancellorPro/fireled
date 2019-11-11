@@ -7,10 +7,11 @@ import {GIFT_WRAP_ROW_ADDED} from "../constants";
 export default function () {
     observer.subscribe(GIFT_WRAP_ROW_ADDED, data => {
         $('#gift-wrap-' + data.embedBlockId)
-            .find('.datetimepicker')
+            .find('.datepicker')
             .datetimepicker({
-                format: 'yyyy-mm-dd hh:ii:ss',
-                autoclose: true
+                format: 'yyyy-mm-dd',
+                autoclose: true,
+                minView: '2'
             });
     });
 }

@@ -44,14 +44,6 @@ class StockReport implements FromCollection, WithHeadings
             ->join('products AS p', 'p.id', '=', 'stock.product_id')
             ->leftJoin('plan AS pl', 'pl.product_id', '=', 'stock.product_id');
 
-        $parentIds = Product::selectRaw('distinct parent_product')->get()->pluck('parent_product')->toArray();
-
-        if($this->hasParent) {
-//            $builder->whereNull('p.parent_product');
-        } else {
-            $builder->whereNotIn('p.id', array_filter($parentIds));
-        }
-
         return $builder->orderBy('stock.updated_at', 'desc')->get();
     }
 }

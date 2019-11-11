@@ -1,7 +1,7 @@
 import {addNewRow} from "./handlers/addNewRow";
 import {mealDelete} from "./handlers/mealDelete";
 import {saveMealState} from "./handlers/savePage";
-import {AWARD_CREATE, AWARD_CREATED, AWARD_DELETE} from "modules/award/constants";
+import {AWARD_CREATE, AWARD_DELETE} from "modules/award/constants";
 import observer from "components/observer/EventObserver";
 import awardDelete from "listeners/awardDelete";
 import awardCreate from "listeners/awardCreate";
@@ -41,7 +41,7 @@ $(document)
         awardCreate.bind(_this)();
         $(this).closest('tr').addClass('changed');
 
-        observer.subscribe(AWARD_CREATED, (data, self) => {
+        observer.subscribe(AWARD_CREATE, (data, self) => {
             saveMealState()
         });
     })
@@ -51,8 +51,15 @@ $(document)
      */
     .on('click', '.award-delete-button', function () {
         const _this = this;
+        const saveButton = $('.save-page');
 
-        awardDelete.bind(_this)();
+        $(this).closest('tr').addClass('changed');
+        $(this).closest('tr').find('input[name="award_id"]').val(0);
+
+        awardDelete.bind(_this, saveButton)();
+        observer.subscribe(AWARD_DELETE, (data, self) => {
+            saveButton.click();
+        });
     })
 
 

@@ -23,7 +23,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/action-log';
+    protected $redirectTo = '/product';
     /**
      * Create a new controller instance.
      *

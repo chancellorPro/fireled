@@ -9,31 +9,11 @@
     'label' => __('Name'),
 ])
 
-{{-- Box size --}}
+{{-- Price --}}
 @include('layouts.form-fields.input', [
     'model' => $currentModel,
-    'name'  => 'box_size',
-    'label' => __('Box size'),
-    'inputType' => 'number'
-])
-
-{{-- Box --}}
-@include('layouts.form-fields.select2', [
-    'label' => __('Box'),
-    'model' => $currentModel,
-    'name' => 'box_id',
-    'collection' => $boxes,
-    'id' => 'id',
-    'value' => 'name',
-    'addempty' => true,
-])
-
-{{-- Box weight --}}
-@include('layouts.form-fields.input', [
-    'model' => $currentModel,
-    'name'  => 'box_weight',
-    'label' => __('Box weight'),
-    'inputType' => 'number'
+    'name'  => 'price',
+    'label' => __('Price'),
 ])
 
 {{-- Description --}}
@@ -43,13 +23,13 @@
     'label' => __('Description'),
 ])
 
-{{-- Parent product --}}
-@include('layouts.form-fields.select2', [
-    'label' => __('Parent product'),
-    'model' => $currentModel,
-    'name' => 'parent_product',
-    'collection' => $products,
+{{-- Preview --}}
+@include('layouts.form-fields.files', [
+    'file'=> !empty($currentModel) ? $currentModel->productFiles->first() : [],
+    'type' => 'image',
+    'name' => 'preview',
+    'url' => 'url',
+    'fileExt' => '.jpg,.png,.gif',
     'id' => 'id',
-    'value' => 'name',
-    'addempty' => true,
+    'label' => __('Preview'),
 ])

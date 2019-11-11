@@ -1,16 +1,56 @@
-import {AWARD_CREATE, AWARD_CREATED, CLOSE_AWARD_MODAL} from "modules/award/constants";
+import {addNewRow} from "./handlers/addNewRow";
+import {saveState} from "./handlers/saveState";
+import {AWARD_CREATE, AWARD_DELETE} from "modules/award/constants";
 import observer from "components/observer/EventObserver";
 import awardDelete from "listeners/awardDelete";
 import awardCreate from "listeners/awardCreate";
-import showForm from "./listeners/showForm";
 
 $(document)
+
+    /**
+     * Add next rows to the announcements grid
+     */
+    .on('click', '.add-new-row', addNewRow)
+
+    /**
+     * Mark row as changed
+     */
+    .on('input', 'input', function () {
+        $(this).closest('tr').addClass('changed');
+    })
+
+    /**
+     * Mark row as changed
+     */
+    .on('.select2').change(function (item) {
+        $(item.target).closest('tr').addClass('changed');
+    })
+
+    /**
+     * Mark row as changed for select2
+     */
+    .on('input', ':checkbox', function () {
+        $(this).attr("checked", !$(this).attr("checked"));
+    })
+
+    /**
+     * Remove empty row
+     */
+    .on('click', '.delete-row', function () {
+        $(this).closest('tr').remove();
+    })
 
     /**
      * Create award and save announcement
      */
     .on('click', '.award-create-button', function () {
-        awardCreate.bind(this)();
+        const _this = this;
+        awardCreate.bind(_this)();
+        $(this).closest('tr').addClass('award-changed');
+
+        observer.subscribe(AWARD_CREATE, (data, self) => {
+            saveState('award-')
+        });
     })
 
     /**
@@ -18,23 +58,26 @@ $(document)
      */
     .on('click', '.award-delete-button', function () {
         const _this = this;
+        const saveButton = $('.save-page');
 
-        awardDelete.bind(_this)();
+        $(this).closest('tr').addClass('award-changed');
+        $(this).closest('tr').find('input[name="award_id"]').val(0);
+
+        awardDelete.bind(_this, saveButton)();
+        observer.subscribe(AWARD_DELETE, (data, self) => {
+            saveState('award-')
+        });
     })
 
     /**
-     * Unsubscribe on modal close
+     * How many rows to add
+     * Change counter
      */
-    .ready(function(){
-        observer.subscribe(CLOSE_AWARD_MODAL, (data, self) => {
-            observer.unsubscribe(AWARD_CREATE);
-            observer.unsubscribe(AWARD_CREATED);
-        });
+    .on('input', '.add-counter', function () {
+        $('.add-counter').val(this.value)
     });
 
-/**
- * Run the show form handler.
- * After click at create or edit button
- */
-$('.show-form')
-    .click(showForm);
+    /**
+     * Fast save data on the announcements page
+     */
+    $('.save-page').click(() => saveState());

@@ -1,6 +1,6 @@
 .table {
 
-  &.word-break td {
+  td {
     word-break: break-all;
   }
 
@@ -9,7 +9,7 @@
    */
   th, td {
     &.id {
-      width: 5%;
+      width: 7%;
     }
 
     &.actions {
@@ -39,58 +39,7 @@
     }
   }
   .striped {
-      background-color: #f6f6f6;
-  }
-
-  &.chain-table {
-    background: none;
-    color: #596066;
-    margin: 0;
-    td {
-      border: none;
-      padding: 0 0 0 2px;
-    }
-
-  }
-
-  &.table-inverse {
-    display: flex;
-
-    thead {
-      tr {
-        padding-right: 40px;
-      }
-    }
-
-    tr {
-      display: flex;
-      flex-direction: column;
-
-      td, th {
-        height: 50px;
-        padding: 10px;
-        border: none;
-        position: relative;
-
-        .award-info {
-          position: absolute;
-          top: 0;
-          right: -50px;
-          padding: 0;
-          margin: 0;
-          width: auto;
-        }
-      }
-    }
+      background-color: #dddddd;
   }
 }
 
-tr.changed {
-  td:first-child, td:last-child {
-    background: #26b99a4d;
-  }
-}
-
-tr.default-row-values {
-  background: #337ab7;
-}

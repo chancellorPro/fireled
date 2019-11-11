@@ -2,10 +2,10 @@
  * Change placement select in Add Assets block
  */
 export default function () {
-    const placementName = $('#add-assets-block-placement-name');
+    const placementName = $('#placement-name');
     if ($(this).val() > 0) {
-        placementName.hide()
+        placementName.attr('disabled', 'disabled');
     } else {
-        placementName.show();
+        placementName.removeAttr('disabled');
     }
 }

@@ -13,7 +13,7 @@ export default function (e) {
     currentElement.toggleClass('hide');
     currentElement.siblings('.hide-assets').toggleClass('hide');
 
-    loadPart(PLACEMENT_ASSETS_ROUTE + '&placement=' + placement, $('#asset-container-' + placement));
+    loadPart(PLACEMENT_ASSETS_ROUTE + '?placement=' + placement, $('#asset-container-' + placement));
 
     return false;
 }

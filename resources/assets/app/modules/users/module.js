@@ -1,19 +1,11 @@
-import searchUserAssets      from "./listeners/searchUserAssets";
-import submitUserPartForm    from "./listeners/submitUserPartForm";
-import deleteNeighbor        from "./listeners/deleteNeighbor";
-import searchNeighbor        from "./listeners/searchNeighbor";
-import addNeighbor           from "./listeners/addNeighbor";
-import loadPlacementAssets   from "./handlers/loadPlacementAssets";
-import hidePlacementAssets   from "./handlers/hidePlacementAssets";
-import changePlacement       from "./handlers/changePlacement";
+import searchUserAssets from "./listeners/searchUserAssets";
+import submitUserPartForm from "./listeners/submitUserPartForm";
+import deleteNeighbor from "./listeners/deleteNeighbor";
+import addNeighbor from "./listeners/addNeighbor";
+import loadPlacementAssets from "./handlers/loadPlacementAssets";
+import hidePlacementAssets from "./handlers/hidePlacementAssets";
+import changePlacement from "./handlers/changePlacement";
 import changeRandomNeighbors from "./handlers/changeRandomNeighbors";
-import changeMovePlacement   from "./handlers/changeMovePlacement";
-import selectRows            from "./handlers/selectRows";
-import updateNeighbors       from "./handlers/updateNeighbors";
-import changePageLimit       from "./handlers/changePageLimit";
-import addComment            from "./handlers/addComment";
-import addCollectible        from "./handlers/addCollectible";
-
 import "./styles.scss";
 
 /**
@@ -36,11 +28,6 @@ deleteNeighbor();
  */
 addNeighbor();
 
-/**
- * Search Neighbors
- */
-searchNeighbor();
-
 $(document)
 
     /**
@@ -61,34 +48,4 @@ $(document)
     /**
      * Hide assets in placement
      */
-    .on('click', '.hide-assets', hidePlacementAssets)
-
-    /**
-     * Auto select rows
-     */
-    .on('change', '.select-rows', selectRows)
-
-    /**
-     * Synchronize move-placement-select selects
-     */
-    .on('change', '.move-placement-select', changeMovePlacement)
-
-    /**
-     * Delete neighbor request
-     */
-    .on('click', '.delete-neighbor-request, #add-neighbors', updateNeighbors)
-    /**
-     * Set page limit
-     */
-     .on('change', '.neighbor-page-limit', changePageLimit)
-
-    /**
-     * Add comment
-     */
-    .on('click', '#add-comment', addComment)
-
-    /**
-     * Add collectible
-     */
-    .on('click', '#add-collectible', addCollectible)
-;
+    .on('click', '.hide-assets', hidePlacementAssets);

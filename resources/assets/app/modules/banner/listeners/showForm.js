@@ -17,8 +17,9 @@ export default function () {
          * Dates init
          */
         $('.banner-form .datepicker').datetimepicker({
-            format: 'yyyy-mm-dd hh:ii:ss',
+            format: 'yyyy-mm-dd',
             autoclose: true,
+            minView: '2'
         });
     });
 }

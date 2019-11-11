@@ -8,23 +8,8 @@ export function copyAssets(e) {
     let assetIds = [];
 
     $('.rows-content').find('input[name="for_copy"]:checked').each(function (n, item) {
-        let assetId = $(item).data('asset-id');
-        if(assetId) {
-            assetIds.push(assetId);
-        }
+        assetIds.push($(item).data('asset-id'))
     });
-
-    /**
-     * Select all if no one is selected
-     */
-    if (assetIds.length == 0) {
-        $('.rows-content').find('input[name="for_copy"]').each(function (n, item) {
-            let assetId = $(item).data('asset-id');
-            if(assetId) {
-                assetIds.push(assetId);
-            }
-        });
-    }
 
     assetIdsField.val(assetIds);
     assetIdsField.select();

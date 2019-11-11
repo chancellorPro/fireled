@@ -7,7 +7,7 @@ export function addNewRow() {
     let tbody = $('#localizations > tbody');
     let template = $('#localization_template').html();
 
-    tbody.prepend(template);
+    tbody.append(template);
 
     return false;
 }

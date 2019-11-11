@@ -3,62 +3,15 @@
         border-bottom: 2px solid red;
     }
     .table {
-        div.pre-wrap-text{
-            white-space: pre-wrap;
-            text-align: left
-        }
         td.actions {
-            width: 80px;
+            width: 95px;
             .action {
                 display: inline-block;
                 vertical-align: top;
             }
         }
-        .description {
-            max-width: 250px;
-            word-wrap: break-word;
-        }
-        .wanted {
-            border-top: 3px dashed #7e91f4;
-            border-bottom: 3px dashed #7e91f4;
-            background: #cfdef4;
-        }
-        .parent {
-            font-size: 25px;
-            color: #808080;
-        }
-        .adp-status {
-            min-width: 120px;
-        }
     }
-
-    .adp-task-artists,
-    .adp-task-statuses,
-    .adp-categories,
-    .adp-task-own {
-        td, th {
-            padding: 0;
-        }
-
-        a {
-            display: block;
-            padding: 0;
-
-            &.btn {
-                display: inline-block;
-            }
-        }
-        a.add-button {
-            margin-top: 5px;
-            display: block;
-            padding: 5px 10px;
-
-            &.btn {
-                display: inline-block;
-            }
-        }
-    }
-
+    
     .adp-categories {
         .active-category {
             background: #e0e0e0;
@@ -108,24 +61,4 @@
     .status-7 {
         background: #abc095;
     }
-
-    /*PRIORITY_NOW*/
-    .priority-1 {
-        color: #000;
-        background: #ff848e;
-    }
-    /*PRIORITY_HIGHT*/
-    .priority-2 {
-        background: #ffd0d0;
-    }
-    /*PRIORITY_NORMAL*/
-    .priority-3 {
-        background: #ffffd0;
-    }
-    /*PRIORITY_LOW*/
-    .priority-4 {
-        background: #ffffff;
-    }
-
-
 }

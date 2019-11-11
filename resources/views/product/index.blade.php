@@ -8,11 +8,7 @@
     @include('common.buttons.create', [
         'route' => 'product.create',
         'name' => __('Product'),
-        'class' => 'ajax-modal-action show-form',
-        'dataset' => [
-            'header' => __('Create product'),
-            'reload' => 1,
-        ],
+        'class' => '',
     ])
 @endsection
 
@@ -24,21 +20,17 @@
             <tr>
                 <th class="id">@lang('Id')</th>
                 <th class="col-sm-2">@lang('Name')</th>
-                <th class="col-sm-2">@lang('Parent product')</th>
-                <th class="id">@lang('Box size')</th>
-                <th class="id">@lang('Box')</th>
-                <th class="id">@lang('Box weight')</th>
+                <th class="col-sm-2">@lang('Preview')</th>
+                <th class="col-sm-2">@lang('Price')</th>
                 <th class="col-sm-3">@lang('Description')</th>
                 <th class="actions">@lang('Actions')</th>
             </tr>
             <tr>
                 <th>@include('layouts.filter-col', ['filterType' => 'string', 'field' => 'id'])</th>
                 <th>@include('layouts.filter-col', ['filterType' => 'select', 'field' => 'id', 'filterCollection' => $rows])</th>
+                <th></th>
+                <th>@include('layouts.filter-col', ['filterType' => 'int_range', 'field' => 'price'])</th>
                 <th>@include('layouts.filter-col', ['filterType' => 'select', 'field' => 'parent_id', 'filterCollection' => $rows])</th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
                 <th class="filter-actions">@include('layouts.filter-col', ['filterType' => 'actions'])</th>
             </tr>
             </thead>
@@ -47,10 +39,8 @@
                 <tr>
                     <td>{{ $item->id }}</td>
                     <td>{{ $item->name }}</td>
-                    <td>{{ $item->product_ref->name ?? '' }}</td>
-                    <td>{{ $item->box_size }}</td>
-                    <td>{{ $item->box_id !== null ? $boxes[$item->box_id] : '' }}</td>
-                    <td>{{ $item->box_weight }}</td>
+                    <td><img height="100" src="{{ Storage::url($item->productFiles->first()->url) }}"></td>
+                    <td>{{ $item->price ?? '' }}</td>
                     <td>{{ $item->description ?? '' }}</td>
                     <td>
                         @include('common.buttons.edit', [
@@ -58,10 +48,7 @@
                             'route_params' => [
                                 'id' => $item->id,
                             ],
-                            'class' => 'ajax-modal-action show-form',
-                            'dataset' => [
-                                'header' => $item->name,
-                            ],
+                            'class' => '',
                         ])
                         @include('common.buttons.delete', [
                             'route' => 'product.destroy',

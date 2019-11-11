@@ -1,21 +1,19 @@
-<form method="POST" action="{{ route('product.update', ['id' => $model->id]) }}" class="form-horizontal">
-    {{ method_field('PATCH') }}
-    {{ csrf_field() }}
+@extends('layouts.pages.config', [
+    'title' => 'Products',
+])
 
-    @include ('product.form', [
-        'model' => $model,
-    ])
+@section('content')
+    <form method="POST" action="{{ route('product.update', ['id' => $model->id]) }}" class="form-horizontal" enctype="multipart/form-data">
+        {{ method_field('POST') }}
+        {{ csrf_field() }}
 
-    <div class="pull-right">
-        @include('common.buttons.cancel')
-        @include('common.buttons.save', [
-            'route' => 'product.update',
-            'route_params' => [
-                'id' => $model->id,
-            ],
-            'dataset' => [
-                'method' => 'PATCH',
-            ],
+        @include ('product.form', [
+            'model' => $model,
         ])
-    </div>
-</form>
+
+        <div class="pull-right">
+            @include('common.buttons.cancel')
+            <input type="submit" value="@lang('Save')" class="btn-primary btn btn-sm">
+        </div>
+    </form>
+@endsection

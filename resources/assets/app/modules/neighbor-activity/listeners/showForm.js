@@ -8,9 +8,10 @@ export default function () {
 
         changeType();
 
-        $('.neighbor-activity-form .datetimepicker').datetimepicker({
-            format: 'yyyy-mm-dd hh:ii:ss',
-            autoclose: true
+        $('.neighbor-activity-form .datepicker').datetimepicker({
+            format: 'yyyy-mm-dd',
+            autoclose: true,
+            minView: '2'
         });
     });
 }

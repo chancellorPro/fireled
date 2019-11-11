@@ -1,13 +1,16 @@
-<form method="POST" action="{{ route('product.store') }}" class="form-horizontal">
-    {{ csrf_field() }}
+@extends('layouts.pages.config', [
+    'title' => 'Products',
+])
 
-    @include ('product.form')
+@section('content')
+    <form method="POST" action="{{ route('product.store') }}" class="form-horizontal" enctype="multipart/form-data">
+        {{ csrf_field() }}
 
-    <div class="pull-right">
-        @include('common.buttons.cancel')
-        @include('common.buttons.save', [
-            'route' => 'product.store',
-            'name' => __('Create'),
-        ])
-    </div>
-</form>
+        @include ('product.form')
+
+        <div class="pull-right">
+            @include('common.buttons.cancel')
+            <input type="submit" value="@lang('Create')" class="btn-primary btn btn-sm">
+        </div>
+    </form>
+@endsection

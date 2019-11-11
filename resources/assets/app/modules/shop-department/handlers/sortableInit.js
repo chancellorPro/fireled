@@ -9,8 +9,6 @@ export default function () {
         removeCloneOnHide: true,
         onEnd: function(e) {
             new Promise(function (resolve) {
-                $(e.item).closest('tr.department').addClass('changed');
-
                 resolve({
                     radio: $(e.item).find('.radio'),
                     parent: $(e.item).closest('.table'),

@@ -12,7 +12,6 @@ export default function(e) {
 
     const dataSet = this.dataset;
     const url = this.href;
-    const parentButton = $(this);
 
     new ModalBuilder()
         .size(SIZES.sm)
@@ -29,14 +28,7 @@ export default function(e) {
                     }
                     currentButton.addClass('loading');
 
-
-                    let data = {};
-                    if(dataSet.hasOwnProperty('withForm')) {
-                        data = parentButton.closest('form').serializeArray();
-                    }
-
                     new http(url)
-                        .data(data)
                         .method(dataSet.method || 'get')
                         .success(response => {
                             if (!!dataSet.event) {

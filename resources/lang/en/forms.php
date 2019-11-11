@@ -12,6 +12,9 @@ return [
     */
 
 
+    'product' => [
+        'preview' => 'Изображение',
+    ],
     'cms-adp-categories' => [
         'files' => 'Preview files',
     ],

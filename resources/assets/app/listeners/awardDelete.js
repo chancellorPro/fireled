@@ -5,9 +5,7 @@ export default function () {
     observer.subscribe(AWARD_DELETE, (data, self) => {
         observer.unsubscribe(AWARD_DELETE, self);
 
-        const createBtn = $('#' + this.dataset.templateId).html()
-            .replace( new RegExp('%field_name%'), this.dataset.fieldName || '');
-
+        const createBtn = $('#' + this.dataset.templateId).html();
         const parent = $(this).parent();
 
         parent.children().remove();

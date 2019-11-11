@@ -2,11 +2,8 @@ import http from "components/http/RequestBuilder";
 import {SavedItemNotFound} from "exceptions/SavedItemNotFound";
 import getFormData from "helpers/getFormData";
 import successHandler from "components/http/successHandler";
-import observer from "components/observer/EventObserver";
 
 export const CONTAINER_SELECTOR = '.fast-save-page-container';
-export const PAGE_SAVED = 'PAGE_SAVED';
-export const UPDATE_SAVE_ALL_BUTTON = 'UPDATE_SAVE_ALL_BUTTON';
 
 /**
  * Fast save data from the all page
@@ -20,7 +17,6 @@ export default function (e) {
 
     const currentBtn = $(this);
     const savedItem = $(CONTAINER_SELECTOR);
-    const dataSet = this.dataset;
 
     if (!savedItem.length) {
         throw new SavedItemNotFound;
@@ -51,9 +47,6 @@ export default function (e) {
         .success(response => {
             formItems.removeClass('changed');
             successHandler(response);
-            if (!!dataSet.event) {
-                observer.dispatch(dataSet.event, response);
-            }
         })
         .send();
 

@@ -52,29 +52,31 @@ import './styles/index.scss';
  * Modules loader
  */
 const path = location.pathname.split('/');
-if (path.length > 1) {
+const context = require.context('modules', true, /module\.js$/);
+if (path[1].length > 2) {
     /**
      * To creating different files for each module
      * (Don't forget npm i --save-dev bundle-loader)
      * const context = require.context('bundle-loader!modules', true, /index\.js$/);
      */
-    const modules = require.context('modules', true, /\.\/[\w-_]+\/module\.js$/);
-    modules.keys().map(module => {
-        const moduleItems = module.split('/');
+    context.keys().map(module => {
+        if (module.split('/')[1] === 'settings') {
+            if (path[2] !== undefined && module.split('/')[3] === path[2]) {
+                console.log('MODULE:', path[2]);
+                context(module);
+            }
+        }
 
-        if (moduleItems[1] === path[1]) {
+        if (module.split('/')[1] === path[1]) {
             console.log('MODULE:', path[1]);
-            modules(module);
+            context(module);
+        }
+
+        if(path[1].length === 0) {
+            context('./default/module.js');
         }
     });
-
-    const subModules = require.context('modules', true, /modules(.*)module\.js$/);
-    subModules.keys().map(module => {
-        const moduleItems = module.split('/');
-
-        if (moduleItems[1] === path[1] && moduleItems[3] === path[2]) {
-            console.log('SUB MODULE:', path[2]);
-            subModules(module);
-        }
-    });
+} else {
+    console.log('MODULE: public');
+    context('./public/module.js');
 }

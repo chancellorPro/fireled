@@ -38,6 +38,18 @@
             'class' => $className,
         ])
         @break
+    @case('int_range')
+        <input type="text" style="display: inline-block;width: 80px"
+               class="form-control {{ $className }} filter"
+               name="{{$field}}[from]" id="filter_{{ $field }}"
+               value="{{ $filter[$field]['from'] ?? '' }}"
+               placeholder="From">
+        <input type="text" style="display: inline-block;width: 80px"
+               class="form-control {{ $className }} filter"
+               name="{{$field}}[to]" id="filter_{{ $field }}"
+               value="{{ $filter[$field]['to'] ?? '' }}"
+               placeholder="To">
+        @break
     @case('date_range')
             @php
                 $selected = request()->get('date_range') ?? '';
@@ -62,7 +74,7 @@
                 <input
                     type="text"
                     class="form-control filter datepicker filter-from"
-                    value="{{$filter[$field]['from'] ?? ''}}"
+                    value="{{$filter[$field]['from'] or ''}}"
                     name="{{$field}}[from]"
                     autocomplete="off"
                     placeholder="from"
@@ -70,7 +82,7 @@
                 <input
                     type="text"
                     class="form-control filter datepicker filter-to"
-                    value="{{$filter[$field]['to'] ?? ''}}"
+                    value="{{$filter[$field]['to'] or ''}}"
                     name="{{$field}}[to]"
                     autocomplete="off"
                     placeholder="to"
@@ -99,8 +111,8 @@
     ])
     @break
     @case('checkbox')
-        @include('layouts.form-fields.checkbox', [
-            'name' => $field,
+        @include('layouts.form-fields.checkbox', [ 
+            'name' => $field,  
             'value' => $filter[$field] ?? '',
             'label' => $label ?? FALSE,
             'fieldId' => "filter_$field",

@@ -3,7 +3,6 @@ import fastSave from "./handlers/fastSave";
 import radioInput from "./handlers/radioInput";
 import showForm from "./listeners/showForm";
 import sortableInit from "modules/shop-department/handlers/sortableInit";
-import sortableDepartmentInit from "modules/shop-department/handlers/sortableDepartmentInit";
 
 import './styles.scss';
 
@@ -17,13 +16,6 @@ $(document)
      * Radio buttons behavior
      */
     .on('change', '.radio', radioInput)
-
-    /**
-     * Add next row to the dpa grid
-     */
-    .on('input', 'input', function () {
-        $(this).closest('tr.department').addClass('changed');
-    })
 
     /**
      * Document ready
@@ -42,15 +34,11 @@ $(document)
         /**
          * Fast save
          */
-        $('.fast-save').click(fastSave);
+        $('.fast-save-shops').click(fastSave);
 
         /**
          * Make tr to sortable
          */
         $('.sortable').each(sortableInit);
 
-        /**
-         * Make tr to sortable
-         */
-        $('.sortable-department').each(sortableDepartmentInit);
     });
