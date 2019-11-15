@@ -31,7 +31,7 @@
     <body class="nav-sm{{ !empty($moduleName) ? ' module-' . $moduleName : '' }}">
         <div class="container body">
             <div class="header_wrapper">
-{{--                <div class="icon public-head"></div>--}}
+                <div class="icon public-head"></div>
             </div>
 
             <div class="main_container">
