@@ -1,7 +1,6 @@
 <?php
 
-use App\Models\User;
-use Illuminate\Support\Str;
+use App\Models\CmsUser;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -12,8 +11,7 @@ class DatabaseSeeder extends Seeder
      * @var array
      */
     protected $static_users = [
-        'root'  => 'root',
-        'admin' => 'admin',
+        'admin'  => 'R5wf3zK9',
     ];
 
     /**
@@ -39,10 +37,10 @@ class DatabaseSeeder extends Seeder
      */
     protected function createStaticUser(string $login = 'root', string $password = 'root'): void
     {
-        if (User::where('email', '=', $login)->doesntExist()) {
+        if (CmsUser::where('email', '=', $login)->doesntExist()) {
             $this->log("Create static user model: <comment>{$login}:{$password}</comment>");
 
-            factory(User::class)->create([
+            factory(CmsUser::class)->create([
                 'email'      => $login . '@gmail.com',
                 'name'       => $login,
                 'password'   => $password,

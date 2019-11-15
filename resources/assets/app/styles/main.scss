@@ -36,8 +36,8 @@
 .x_content .table .state {
     display: block;
     overflow: hidden;
-    margin-bottom: 10px;
-    padding-bottom: 10px;
+    margin-bottom: 0;
+    padding-bottom: 0;
     border-bottom: 1px solid #eee;
 }
 .x_content .table .state:last-child {
@@ -48,7 +48,11 @@
 .x_content .table .state .item {
     display: block;
     overflow: hidden;
-    margin-bottom: 4px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+.x_content .table .state .item .form-group{
+    margin-bottom: 0;
 }
 .x_content .table .state .item .control-label {
     word-break: break-word;
@@ -94,4 +98,72 @@ span.select2-container {
         max-width: 100%;
         max-height: 100%;
     }
+}
+
+
+.table-borderless{
+    td, th {
+        border: none !important;
+    }
+}
+
+hr.narrow {
+    margin: 0 0 10px;
+}
+
+.btn-ssm {
+    padding: 2px 5px 0;
+    font-size: 12px;
+}
+
+span.fa.link-to-cms {
+    display: inline-block;
+}
+
+.input-group-addon {
+    padding: 0 12px;
+}
+
+.page-limit-wrapper {
+    width: 80px;
+    display: inline-block;
+    margin: 22px 0;
+
+    .form-group {
+        margin: 0;
+    }
+}
+
+#update-all{
+    position: fixed;
+    top: 40%;
+    right: 10px;
+    width: 40px;
+    height: 180px;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    font-size: 18px;
+}
+
+.d-inline {
+    display: inline-block;
+}
+
+.env-dev {
+    color: green;
+}
+
+.env-stage {
+    color: #008df3;
+}
+
+.env-live {
+    color: darkred;
+}
+
+.wrap {
+    white-space: normal;
+}
+.no-wrap {
+    white-space: nowrap;
 }

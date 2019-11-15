@@ -18,6 +18,11 @@ Route::get('/', 'IndexController@index');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('basket-add/{id}', 'Basket\IndexController@basketAdd')->name('basket.add');
+Route::post('basket-remove/{id}', 'Basket\IndexController@basketRemove')->name('basket.remove');
+Route::post('order-send', 'Basket\IndexController@orderSend')->name('order.send');
+Route::get('set-phone', 'Basket\IndexController@setPhone')->name('set.phone');
+Route::post('save-phone', 'Basket\IndexController@savePhone')->name('save.phone');
 
 Route::middleware(['auth'])->group(function () {
 
@@ -26,10 +31,6 @@ Route::middleware(['auth'])->group(function () {
     Route::post('product/update/{id}', 'Product\IndexController@update')->name('product.update');
     Route::resource('user', 'User\IndexController');
 
-    Route::get('export', 'ActionLog\IndexController@getExportData')->name('export');
-    Route::get('send', 'ActionLog\IndexController@orderSend')->name('send');
 });
-
-Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

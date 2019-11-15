@@ -29,7 +29,7 @@ class Product extends Model
     ];
 
     /**
-     * CmsAdpFile relation
+     * productFiles relation
      *
      * @return HasMany
      */

@@ -467,7 +467,7 @@ var Lightbox = (function ($) {
 				var _this3 = this;
 
 				var width = this._$element.data('width') || 560;
-				var height = this._$element.data('height') || 560;
+				var height = this._$element.data('height') || 300;
 
 				var disableExternalCheck = this._$element.data('disableExternalCheck') || false;
 				this._toggleLoading(false);
@@ -488,6 +488,8 @@ var Lightbox = (function ($) {
 					this._$modalArrows.css('display', 'none');
 
 				this._resize(width, height);
+				$("#phone").mask("(99) 9999-9999");
+
 				return this;
 			}
 		}, {

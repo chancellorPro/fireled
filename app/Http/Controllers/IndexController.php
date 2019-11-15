@@ -5,14 +5,16 @@ declare(strict_types = 1);
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\View\View;
 
 class IndexController extends AbstractController
 {
     /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return Factory|View
      */
     public function index()
     {
-        return redirect('/login');
+        return redirect('/home');
     }
 }

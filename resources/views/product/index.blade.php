@@ -39,7 +39,11 @@
                 <tr>
                     <td>{{ $item->id }}</td>
                     <td>{{ $item->name }}</td>
-                    <td><img height="100" src="{{ Storage::url($item->productFiles->first()->url) }}"></td>
+                    <td>
+                        @if($item->productFiles->first())
+                            <img height="100" src="{{ Storage::url($item->productFiles->first()->url) }}">
+                        @endif
+                    </td>
                     <td>{{ $item->price ?? '' }}</td>
                     <td>{{ $item->description ?? '' }}</td>
                     <td>

@@ -6,6 +6,7 @@ use App\Models\Product;
 use App\Traits\FilterBuilder;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -33,14 +34,21 @@ class HomeController extends Controller
     /**
      * Show the application dashboard.
      *
+     * @param Request $request
      * @return RedirectResponse
      */
     public function index(Request $request)
     {
-        $products = $this->applyFilter(
-            $request,
-            Product::oldest('id')
-        )->paginate($this->perPage);
+        $queryBuilder = Product::query();
+
+        if (Auth::user()) {
+            $queryBuilder->selectRaw('b.count, products.*')->leftJoin('basket as b', function ($join) {
+                $join->on('b.product_id', '=', 'products.id')
+                    ->where('b.user_id', '=', auth()->user()->id);
+            });
+        }
+
+        $products = $this->applyFilter($request, $queryBuilder)->paginate($this->perPage);
 
         return view('public.index', [
             'filter'          => $this->getFilter(),

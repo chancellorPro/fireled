@@ -2,6 +2,7 @@ import observer from "components/observer/EventObserver";
 import http from "components/http/RequestBuilder";
 import {getModalCounter} from "components/modal/ModalBuilder";
 import successHandler from "components/http/successHandler";
+import errorHandler from "components/http/errorHandler";
 
 /**
  * Submit form
@@ -24,7 +25,7 @@ export default function(e) {
                 observer.dispatch(this.dataset.event, response);
             }
 
-            if (canReload(this)) {
+            if (response.type !== 'error' && canReload(this)) {
                 location.reload();
             }
 
@@ -32,7 +33,11 @@ export default function(e) {
                 currentButton.closest('.modal').modal('hide');
             }
 
-            successHandler(response);
+            if(response.type === 'error') {
+                errorHandler(response);
+            } else {
+                successHandler(response);
+            }
         })
         .complete(() => {
             currentButton.removeClass('loading');
