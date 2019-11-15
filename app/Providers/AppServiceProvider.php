@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Validation\ValidationException;
@@ -20,6 +21,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        Blade::if('admin', function () {
+            return Auth::guard('cms_user')->user();
+        });
+
         Blade::directive('formFieldLabel', function ($expression) {
             return '<?php $currentRouteActionName = explode(".", Route::currentRouteName());
                     $currentRouteName = empty($currentRouteActionName[0]) ? "" : $currentRouteActionName[0];

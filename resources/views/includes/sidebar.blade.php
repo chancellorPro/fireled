@@ -8,10 +8,13 @@
         </div>
 
         <div class="clearfix"></div>
+                @admin
+                    @dump(Auth::user()->name)
+                @endadmin
 
         <!-- menu profile quick info -->
         <div class="profile">
-            
+
             <div class="profile_info">
                 <h2>@lang('Welcome'), {{ Auth::user()->name }}</h2>
             </div>

@@ -1,7 +1,10 @@
 <?php
+
 namespace App\Http\Controllers\CmsAuth;
 
 use App\Http\Controllers\Controller;
+use App\Traits\AuthenticatesCmsUsers;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -23,6 +26,7 @@ class LoginController extends Controller
      * @var string
      */
     protected $redirectTo = '/product';
+    protected $redirectAfterLogout = '/login';
 
     /**
      * Create a new controller instance.
@@ -32,5 +36,15 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+    public function showLoginForm()
+    {
+        return view('auth.login');
+    }
+
+    protected function guard()
+    {
+        return Auth::guard('cms_user');
     }
 }

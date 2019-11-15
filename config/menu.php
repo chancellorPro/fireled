@@ -4,7 +4,8 @@ return [
         'name' => 'Admin',
         'child' => [
             ['name' => 'Товары', 'route' => 'product.index', 'icon' => 'fa-cubes'],
-            ['name' => 'Менеджеры', 'route' => 'user.index', 'icon' => 'fa-users'],
+            ['name' => 'Заказы', 'route' => 'order.index', 'icon' => 'fa-archive'],
+            ['name' => 'Клиенты', 'route' => 'user.index', 'icon' => 'fa-users'],
         ],
     ],
 

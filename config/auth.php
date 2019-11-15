@@ -41,6 +41,11 @@ return [
             'provider' => 'users',
         ],
 
+        'cms_user' => [
+            'driver' => 'session',
+            'provider' => 'cms_user',
+        ],
+
         'api' => [
             'driver' => 'token',
             'provider' => 'users',
@@ -69,6 +74,11 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
+        ],
+
+        'cms_user' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\CmsUser::class,
         ],
 
         // 'users' => [

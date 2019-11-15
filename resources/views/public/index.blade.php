@@ -50,7 +50,7 @@
             @include('layouts.filter-col', ['filterType' => 'actions'])
         </div>
         <div class="col-sm-2 pull-right">
-            @include('layouts.filter-col', ['filterType' => 'string', 'field' => 'name', 'placeholder' => 'Asset Name'])
+            @include('layouts.filter-col', ['filterType' => 'string', 'field' => 'name', 'placeholder' => 'Search'])
         </div>
     </div>
 
