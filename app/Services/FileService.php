@@ -30,7 +30,7 @@ class FileService
             Storage::put($path, $file->get(), 'public');
         } else {
             self::resizeImage($image, $options);
-            Storage::put($path, (string) $image->encode(), 'public');
+            Storage::put($path, (string) $image->encode());
         }
 
         return $path;
@@ -84,11 +84,11 @@ class FileService
 
         if ($extension === 'gif') {
             $stream = fopen($link, 'r');
-            Storage::put($path, stream_get_contents($stream), 'public');
+            Storage::put($path, stream_get_contents($stream));
             fclose($stream);
         } else {
             self::resizeImage($image, $options);
-            Storage::put($path, (string)$image->encode(), 'public');
+            Storage::put($path, (string)$image->encode());
         }
 
         return $path;
