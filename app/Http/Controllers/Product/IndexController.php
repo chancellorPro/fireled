@@ -65,7 +65,7 @@ class IndexController extends Controller
             $productFiles,
             $request->file('preview'),
             config('presets.adp_file_types.animation'),
-            'public/Product/' . $product->id
+            'Product/' . $product->id
         );
         $product->productFiles()->saveMany($productFiles);
 
