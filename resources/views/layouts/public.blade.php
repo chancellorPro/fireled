@@ -31,7 +31,7 @@
     <body class="nav-sm{{ !empty($moduleName) ? ' module-' . $moduleName : '' }}">
         <div class="container body">
             <div class="header_wrapper">
-                <div class="icon public-head"></div>
+{{--                <div class="icon public-head"></div>--}}
             </div>
 
             <div class="main_container">
@@ -42,13 +42,13 @@
             </div>
         </div>
 
-        @auth
+        @admin
         <div class="x_panel">
             <div class="col-sm-1 col-sm-offset-5">
                 <a class="pull-right" href="/product">Admin panel</a>
             </div>
         </div>
-        @endauth
+        @endadmin
 
         @stack('globals')
         <script>

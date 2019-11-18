@@ -31,18 +31,16 @@
     <body class="nav-sm{{ !empty($moduleName) ? ' module-' . $moduleName : '' }}">
         <div class="container body">
             <div class="main_container">
-                @if (Auth::check())
-
+                @admin
                     @include('includes/sidebar')
                     @include('includes/topbar')
-
-                @endif
+                @endadmin
 
                 @yield('main_container')
 
-                @if (Auth::check())
+                @admin
                     @include('includes/footer')
-                @endif
+                @endadmin
             </div>
         </div>
 

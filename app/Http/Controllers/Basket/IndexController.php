@@ -153,7 +153,8 @@ class IndexController extends Controller
                 'password' => Hash::make('secret' . $request->get('phone'))
             ]
         );
-        Auth::loginUsingId($user->id, TRUE);
+
+        auth('web')->loginUsingId($user->id, TRUE);
         pushNotify('success', 'Теперь вы можете совершать покупки!');
 
         return redirect()->back();

@@ -47,4 +47,9 @@ class LoginController extends Controller
     {
         return Auth::guard('cms_user');
     }
+
+    public function logout()
+    {
+        auth('cms_user')->logout();
+    }
 }

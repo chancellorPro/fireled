@@ -3,26 +3,12 @@
         <div class="navbar nav_title" style="border: 0;">
             <a href="{{ url('/') }}" class="site_title">
                 <i class="fa fa-home"></i>
-                <span>{{ config('app.name', 'Stock Worker') }}</span>
+                <span>{{ config('app.name', 'Fire Led') }}</span>
             </a>
         </div>
 
         <div class="clearfix"></div>
-                @admin
-                    @dump(Auth::user()->name)
-                @endadmin
 
-        <!-- menu profile quick info -->
-        <div class="profile">
-
-            <div class="profile_info">
-                <h2>@lang('Welcome'), {{ Auth::user()->name }}</h2>
-            </div>
-        </div>
-        <!-- /menu profile quick info -->
-        
-        <br />
-        
         <!-- sidebar menu -->
         <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
             <div class="menu-section">

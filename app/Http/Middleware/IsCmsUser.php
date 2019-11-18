@@ -9,7 +9,7 @@ class IsCmsUser
 {
     public function handle($request, Closure $next, $guard = 'cms_user')
     {
-        if (!Auth::guard('cms_user')->check()) {
+        if (!Auth::guard('cms_user')->user()) {
             return redirect('/');
         }
         return $next($request);

@@ -42,7 +42,11 @@
                         <i style="margin-top: 8px;" class="fa fa-sign-out pull-right"></i> @lang('Log Out')
                     </a>
                 </li>
-{{--                <li class="">--}}
+
+                <li>
+                    <a>@lang('Welcome'), {{ Auth::guard('cms_user')->user()->name }}</a>
+                </li>
+                {{--                <li class="">--}}
 {{--                    <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">--}}
 {{--                        {{ Auth::user()->name }}--}}
 {{--                        <span class=" fa fa-angle-down"></span>--}}

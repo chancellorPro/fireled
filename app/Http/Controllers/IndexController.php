@@ -15,6 +15,6 @@ class IndexController extends AbstractController
      */
     public function index()
     {
-        return redirect('/home');
+        return redirect('/login');
     }
 }
