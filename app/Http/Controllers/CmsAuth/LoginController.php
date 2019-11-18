@@ -26,7 +26,7 @@ class LoginController extends Controller
      * @var string
      */
     protected $redirectTo = '/product';
-    protected $redirectAfterLogout = '/login';
+    protected $redirectAfterLogout = '/home';
 
     /**
      * Create a new controller instance.
@@ -35,7 +35,7 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest')->except('logout');
+//        $this->middleware('isCmsUser')->except('logout');
     }
 
     public function showLoginForm()
@@ -51,5 +51,6 @@ class LoginController extends Controller
     public function logout()
     {
         auth('cms_user')->logout();
+        return redirect($this->redirectAfterLogout);
     }
 }

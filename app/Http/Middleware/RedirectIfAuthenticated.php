@@ -12,7 +12,7 @@ class RedirectIfAuthenticated
      * Handle an incoming request.
      *
      * @param Request $request
-     * @param \Closure                 $next
+     * @param Closure $next
      * @param string|null              $guard
      *
      * @return mixed
@@ -20,7 +20,7 @@ class RedirectIfAuthenticated
     public function handle($request, Closure $next, $guard = null)
     {
         if (Auth::guard($guard)->check()) {
-            return redirect('/home');
+            return redirect('/product');
         }
 
         return $next($request);

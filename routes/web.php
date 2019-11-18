@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'IndexController@index');
 
-Auth::routes();
+//Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('set-phone', 'Basket\IndexController@setPhone')->name('set.phone');
@@ -24,7 +24,7 @@ Route::post('save-phone', 'Basket\IndexController@savePhone')->name('save.phone'
 Route::get('/admin', 'AdminController@index');
 Route::get('/admin/login', ['as' => 'admin.login', 'uses' => 'CmsAuth\LoginController@showLoginForm']);
 Route::post('/admin/login', ['uses' => 'CmsAuth\LoginController@login']);
-Route::get('/admin/logout', ['as' => 'admin.logout', 'uses' => 'CmsAuth\LoginController@logout']);
+Route::post('/admin/logout', ['as' => 'admin.logout', 'uses' => 'CmsAuth\LoginController@logout']);
 
 Route::middleware(['auth'])->group(function () {
     Route::get('basket-add/{id}', 'Basket\IndexController@basketAdd')->name('basket.add');

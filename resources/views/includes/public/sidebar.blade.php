@@ -27,11 +27,11 @@
                 <span class="glyphicon"></span>
             </a>
 
-            <a data-toggle="tooltip" data-placement="top" title="Logout" href="{{ route('logout') }}" onclick="event.preventDefault();
+            <a data-toggle="tooltip" data-placement="top" title="Logout" href="" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                 <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
             </a>
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+            <form id="logout-form" action="" method="POST" style="display: none;">
                 @csrf
             </form>
         </div>-->

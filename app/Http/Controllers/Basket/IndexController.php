@@ -85,16 +85,19 @@ class IndexController extends Controller
     }
 
     /**
+     * order Send
      *
+     * @return JsonResponse
      */
     public function orderSend()
     {
-        $basket_items_builder = Basket::where(['user_id' => auth()->user()->id]);
+        $basket_items_builder = Basket::selectRaw('count, user_id, product_id')->where(['user_id' => auth()->user()->id]);
         $basket_items = $basket_items_builder->get();
         $total_sum = 0;
         foreach ($basket_items as $item) {
             $total_sum += $item->product->price * $item->count;
         }
+//        dd($basket_items);
         $order = Order::create([
             'user_id'    => auth()->user()->id,
             'order_data' => json_encode($basket_items->toArray()),
