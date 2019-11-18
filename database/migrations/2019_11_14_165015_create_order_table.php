@@ -18,7 +18,7 @@ class CreateOrderTable extends Migration
             $table->unsignedInteger('user_id');
             $table->json('order_data');
             $table->float('total_sum');
-            $table->bool('status');
+            $table->boolean('status');
             $table->text('description')->nullable();
             $table->timestamps();
         });
