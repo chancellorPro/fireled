@@ -30,8 +30,11 @@ $(document)
     })
 
     .on('click', '#order-send', function () {
+        let data = getFormData($('.recount'));
+
         new http($(this).data('route'))
             .method('POST')
+            .data({...data})
             .success(function (resp) {
                 successHandler(resp);
                 $('.basket-hide').click();

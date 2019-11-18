@@ -7,6 +7,12 @@ html , body{
  width:100%;
  }
 
+.fixed-height {
+    height: 450px;
+    margin-bottom: 10px;
+    overflow-x: hidden;
+}
+
 .asset-box{
     position: relative;
     width: 200px;

@@ -30,6 +30,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('basket-add/{id}', 'Basket\IndexController@basketAdd')->name('basket.add');
     Route::post('basket-remove/{id}', 'Basket\IndexController@basketRemove')->name('basket.remove');
     Route::post('order-send', 'Basket\IndexController@orderSend')->name('order.send');
+    Route::post('order-close/{id}', 'Order\IndexController@close')->name('order.close');
 });
 
 Route::middleware(['isCmsUser'])->group(function () {

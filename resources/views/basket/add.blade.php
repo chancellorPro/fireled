@@ -2,6 +2,7 @@
     @php
         $total_sum = 0;
     @endphp
+    <div class="fixed-height">
     @foreach($basket as $item)
         <div class="row x_panel" style="min-height: 100px">
             <div class="col-sm-5">
@@ -41,6 +42,7 @@
             <div style="position:absolute;bottom: 10px; right: 10px"><a class="item-remove" href="{{route('basket.remove', ['id' => $item->product_id])}}"><i class="fa fa-times"></i> Удалить товар из корзины</a></div>
         </div>
     @endforeach
+    </div>
     <div class="row x_panel">
         <div class="col-sm-5" style="padding-top: 25px">
             <button type="button" class="btn btn-default basket-hide" data-dismiss="modal" aria-label="Close">Продолжить покупки</button>

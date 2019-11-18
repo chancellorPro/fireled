@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 /**
  * Class Order
@@ -31,5 +32,16 @@ class Order extends Model
         'user_id',
         'order_data',
         'total_sum',
+        'status',
     ];
+
+    /**
+     * user relation
+     *
+     * @return HasOne
+     */
+    public function user()
+    {
+        return $this->hasOne(User::class, 'id', 'user_id');
+    }
 }

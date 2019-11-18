@@ -74,7 +74,7 @@
                 <input
                     type="text"
                     class="form-control filter datepicker filter-from"
-                    value="{{$filter[$field]['from'] or ''}}"
+                    value="{{$filter[$field]['from'] ?? ''}}"
                     name="{{$field}}[from]"
                     autocomplete="off"
                     placeholder="from"
@@ -82,7 +82,7 @@
                 <input
                     type="text"
                     class="form-control filter datepicker filter-to"
-                    value="{{$filter[$field]['to'] or ''}}"
+                    value="{{$filter[$field]['to'] ?? ''}}"
                     name="{{$field}}[to]"
                     autocomplete="off"
                     placeholder="to"

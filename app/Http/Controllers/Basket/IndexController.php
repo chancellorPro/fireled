@@ -87,23 +87,28 @@ class IndexController extends Controller
     /**
      * order Send
      *
+     * @param Request $request
      * @return JsonResponse
      */
-    public function orderSend()
+    public function orderSend(Request $request)
     {
-        $basket_items_builder = Basket::selectRaw('count, user_id, product_id')->where(['user_id' => auth()->user()->id]);
+        $basket_items_builder = Basket::selectRaw('count, product_id')->where(['user_id' => auth()->user()->id]);
         $basket_items = $basket_items_builder->get();
+        $formData = $request->all();
         $total_sum = 0;
+
         foreach ($basket_items as $item) {
+            $item->count = $formData[$item->product->id]['count'];
             $total_sum += $item->product->price * $item->count;
         }
-//        dd($basket_items);
+
         $order = Order::create([
             'user_id'    => auth()->user()->id,
-            'order_data' => json_encode($basket_items->toArray()),
+            'order_data' => json_encode($basket_items->makeHidden('product')->toArray()),
             'total_sum'  => $total_sum,
         ]);
 
+        $this->sendMessage($order->id, $total_sum);
         $basket_items_builder->delete();
 
         return $this->success(['message' => 'Заказ № '.$order->id.' успешно создан! Ждите звонка оператора.']);
@@ -113,14 +118,15 @@ class IndexController extends Controller
      * Send Telegram message
      *
      * @param $id
+     * @param $total_sum
      * @return bool|string
      */
-    function sendMessage($id)
+    function sendMessage($id, $total_sum)
     {
-        $order_link = "/orders/$id";
+        $order_link = "/order/$id/edit";
 
-        $url = "https://api.telegram.org/bot" . env('TELEGRAM_TOKEN') . "/sendMessage?chat_id=" . env('CHAT_ID');
-        $url = $url . "&text=Новый заказ: " . $_SERVER['HTTP_HOST'] . $order_link;
+        $url = "https://api.telegram.org/bot" . env('TELEGRAM_TOKEN') . "/sendMessage?parse_mode=HTML&chat_id=" . env('CHAT_ID');
+        $url = $url . "&text=Новый заказ на сумму ₴$total_sum: " . $_SERVER['HTTP_HOST'] . $order_link . ". \n\r" . auth()->user()->name;
         $ch = curl_init();
         $optArray = array(
             CURLOPT_URL            => $url,

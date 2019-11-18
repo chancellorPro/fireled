@@ -46,7 +46,6 @@ class IndexController extends Controller
         return view('product.index', [
             'rows'   => $data,
             'filter' => $this->getFilter(),
-            'boxes'  => arrayToKeyValue(config('presets.boxes'), 'id', 'name'),
         ]);
     }
 
@@ -72,7 +71,7 @@ class IndexController extends Controller
 
         pushNotify('success', __('Product') . ' ' . __('common.action.added'));
 
-        return redirect()->route('product.edit', ['id' => $product->id]);
+        return redirect()->route('product.index');
     }
 
     /**
