@@ -61,12 +61,16 @@ class IndexController extends Controller
         $product = Product::create($request->all());
 
         $productFiles = [];
-        $this->saveFile(
-            $productFiles,
-            $request->file('preview'),
-            config('presets.adp_file_types.animation'),
-            'Product/' . $product->id
-        );
+        if (is_array($request->file('preview'))) {
+            foreach ($request->file('preview') as $preview) {
+                $this->saveFile(
+                    $productFiles,
+                    $preview,
+                    config('presets.adp_file_types.animation'),
+                    'Product/' . $product->id
+                );
+            }
+        }
         $product->productFiles()->saveMany($productFiles);
 
         pushNotify('success', __('Product') . ' ' . __('common.action.added'));
@@ -88,12 +92,16 @@ class IndexController extends Controller
         $product->update($request->all());
 
         $productFiles = [];
-        $this->saveFile(
-            $productFiles,
-            $request->file('preview'),
-            config('presets.adp_file_types.animation'),
-            'Product/' . $product->id
-        );
+        if (is_array($request->file('preview'))) {
+            foreach ($request->file('preview') as $preview) {
+                $this->saveFile(
+                    $productFiles,
+                    $preview,
+                    config('presets.adp_file_types.animation'),
+                    'Product/' . $product->id
+                );
+            }
+        }
         $product->productFiles()->saveMany($productFiles);
 
         return redirect()->back();
@@ -107,7 +115,7 @@ class IndexController extends Controller
     public function create()
     {
         return view('product.create', [
-            'products'  => Product::all(),
+            'products' => Product::all(),
         ]);
     }
 
@@ -121,8 +129,8 @@ class IndexController extends Controller
     public function edit(int $id)
     {
         return view('product.edit', [
-            'model'     => Product::find($id),
-            'products'  => Product::all(),
+            'model'    => Product::find($id),
+            'products' => Product::all(),
         ]);
     }
 
@@ -136,8 +144,8 @@ class IndexController extends Controller
     public function show($id)
     {
         return view('product.edit', [
-            'model'     => Product::find($id),
-            'products'  => Product::all(),
+            'model'    => Product::find($id),
+            'products' => Product::all(),
         ]);
     }
 
@@ -169,8 +177,8 @@ class IndexController extends Controller
     private function saveFile(&$productFiles, $file, $type, $folder)
     {
         if ($file) {
-            $ext           = FileService::getFileExt($file);
-            $path          = FileService::uploadFile($file, $folder, uniqid() . $ext);
+            $ext = FileService::getFileExt($file);
+            $path = FileService::uploadFile($file, $folder, uniqid() . $ext);
             $productFiles[] = new productFile([
                 'name'      => $file->getClientOriginalName(),
                 'type'      => $type,

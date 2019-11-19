@@ -11,7 +11,6 @@
                         $files[] = $file;
                     }
                 @endphp
-
                 @foreach($files as $file)
                
                 <div class="col-md-3 {{$type}}-thumbnail file-box thumbnail">
