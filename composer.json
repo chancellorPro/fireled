@@ -12,6 +12,7 @@
         "ext-curl": "*",
         "ext-json": "*",
         "barryvdh/laravel-debugbar": "^3.2",
+        "bogdaan/viber-bot-php": "^0.0.13",
         "fideloper/proxy": "^4.0",
         "google/apiclient": "^2.0",
         "guzzlehttp/guzzle": "^6.3",

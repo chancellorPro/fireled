@@ -27,7 +27,7 @@ class FileService
         $image = Image::make($file);
 
         if($image->mime() === 'gif') {
-            Storage::put($path, $file->get(), 'public');
+            Storage::put($path, $file->get());
         } else {
             self::resizeImage($image, $options);
             Storage::put($path, (string) $image->encode());

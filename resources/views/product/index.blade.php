@@ -40,8 +40,13 @@
                     <td>{{ $item->id }}</td>
                     <td>{{ $item->name }}</td>
                     <td>
-                        @if($item->productFiles->first())
-                            <img height="100" src="{{ Storage::url($item->productFiles->first()->url) }}">
+                        @if($item->productFiles)
+                            @include('layouts.form-fields.slider', [
+                                'images'=> $item->productFiles,
+                                'name' => 'name',
+                                'url' => 'url',
+                                'height' => 90
+                            ])
                         @endif
                     </td>
                     <td>{{ $item->price ?? '' }}</td>

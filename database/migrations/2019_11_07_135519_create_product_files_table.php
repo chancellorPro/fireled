@@ -24,11 +24,11 @@ class CreateProductFilesTable extends Migration
 
             $table->index(['file_hash'], 'file_hash_index');
 
-            $table->foreign('product_id', 'product_files_fk0')
-                ->references('id')
-                ->on('products')
-                ->onUpdate('RESTRICT')
-                ->onDelete('RESTRICT');
+//            $table->foreign('product_id', 'product_files_fk0')
+//                ->references('id')
+//                ->on('products')
+//                ->onUpdate('RESTRICT')
+//                ->onDelete('RESTRICT');
         });
     }
 

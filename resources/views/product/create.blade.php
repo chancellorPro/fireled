@@ -4,6 +4,7 @@
 
 @section('content')
     <form method="POST" action="{{ route('product.store') }}" class="form-horizontal" enctype="multipart/form-data">
+        {{ method_field('POST') }}
         {{ csrf_field() }}
 
         @include ('product.form')

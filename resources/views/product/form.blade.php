@@ -25,11 +25,12 @@
 
 {{-- Preview --}}
 @include('layouts.form-fields.files', [
-    'file'=> !empty($currentModel) ? $currentModel->productFiles->first() : [],
+    'files'=> !empty($currentModel) ? $currentModel->productFiles : [],
     'type' => 'image',
     'name' => 'preview',
     'url' => 'url',
     'fileExt' => '.jpg,.png,.gif',
     'id' => 'id',
+    'mult' => true,
     'label' => __('Preview'),
 ])

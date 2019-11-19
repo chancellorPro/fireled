@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0b6c5ec5d434afee73b2ab400dfb5a14",
+    "content-hash": "85034d7e5a8de65287eef22a2ff1b0c2",
     "packages": [
         {
             "name": "barryvdh/laravel-debugbar",
@@ -73,6 +73,52 @@
                 "webprofiler"
             ],
             "time": "2019-08-29T07:01:03+00:00"
+        },
+        {
+            "name": "bogdaan/viber-bot-php",
+            "version": "0.0.13",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Bogdaan/viber-bot-php.git",
+                "reference": "6ceb64ab8351df846d9ca306889f89bf146cefff"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Bogdaan/viber-bot-php/zipball/6ceb64ab8351df846d9ca306889f89bf146cefff",
+                "reference": "6ceb64ab8351df846d9ca306889f89bf146cefff",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "^6.2",
+                "php": ">=5.5.0"
+            },
+            "require-dev": {
+                "monolog/monolog": "^1.22",
+                "phpunit/phpunit": "^4.8"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Viber\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Novikov Bogdan",
+                    "email": "hcbogdan@gmail.com"
+                }
+            ],
+            "description": "Php bot interface to work with Viber API",
+            "keywords": [
+                "bot",
+                "im",
+                "viber"
+            ],
+            "time": "2019-09-16T11:55:28+00:00"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",
