@@ -31,6 +31,5 @@
     'url' => 'url',
     'fileExt' => '.jpg,.png,.gif',
     'id' => 'id',
-    'mult' => true,
     'label' => __('Preview'),
 ])
