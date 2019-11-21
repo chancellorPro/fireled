@@ -90,6 +90,13 @@ class IndexController extends Controller
     {
         $product = Product::findOrFail($id);
         $product->update($request->all());
+        $uploadedFiles = $request->get('uploaded_preview');
+
+        foreach ($product->productFiles as $productFiles) {
+            if (!in_array($productFiles->id, $uploadedFiles)) {
+                $productFiles->delete();
+            }
+        }
 
         $productFiles = [];
         if (is_array($request->file('preview'))) {

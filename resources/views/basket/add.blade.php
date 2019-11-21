@@ -21,7 +21,7 @@
                     <div class="col-sm-4">
                         <div class="basket-price" data-price="{{$item->product->price}}">
                         <span>
-                            {{$item->product->price}} UAH
+                            {{$item->product->price}} USD
                         </span>
                         </div>
                     </div>
@@ -34,7 +34,7 @@
                         @php
                             $total_sum += $item->count * $item->product->price;
                         @endphp
-                        Сумма: <b class="item-sum">{{$item->count * $item->product->price}}</b> UAH
+                        Сумма: <b class="item-sum">{{$item->count * $item->product->price}}</b> USD
                     </div>
                 </div>
             </div>
@@ -48,7 +48,7 @@
             <button type="button" class="btn btn-default basket-hide" data-dismiss="modal" aria-label="Close">Продолжить покупки</button>
         </div>
         <div class="col-sm-4 pull-right" style="background: #fff3b5;padding: 15px">
-            Итого: <b id="total-sum">{{ $total_sum }}</b> UAH
+            Итого: <b id="total-sum">{{ $total_sum }}</b> USD
             <button class="btn btn-success" id="order-send" data-route="{{route('order.send')}}">Оформить заказ</button>
         </div>
     </div>

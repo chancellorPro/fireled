@@ -94,7 +94,7 @@
                     $categories[$row->nlaAssets->category_id]->name : '' }}
                 </span>
                 <div><b>{{$row->name}}</b>
-                    <div class="pull-right">{{$row->price}} UAH</div>
+                    <div class="pull-right">{{$row->price}} USD</div>
                 </div>
                 <div class="title">
                     <div>
