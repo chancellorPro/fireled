@@ -55,7 +55,7 @@ class IndexController extends Controller
     {
         return view('order.edit', [
             'order' => Order::findOrFail($id),
-            'products' => Product::all()->keyBy('id')->toArray()
+            'products' => Product::with('productFiles')->get()->keyBy('id')->toArray()
         ]);
     }
 

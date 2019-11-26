@@ -12,10 +12,18 @@
 
             @foreach(json_decode($order->order_data) as $k => $item)
                 <div class="row" style="{{ (($k % 2) == 0) ? 'background:#eaeaea' : ''}}">
-                    <div class="col-sm-6">
+                    <div class="col-sm-2">
+                        @php
+                            $preview_url = array_pop($products[$item->product_id]['product_files'])['url'];
+                        @endphp
+                    @if(!empty($preview_url))
+                        <img width="70" src="{{ Storage::url($preview_url) }}">
+                    @endif
+                    </div>
+                    <div class="col-sm-7">
                         Товар: {{ $products[$item->product_id]['name'] }}
                     </div>
-                    <div class="col-sm-6">
+                    <div class="col-sm-3">
                         x{{ $item->count }}
                     </div>
                 </div>
