@@ -101,10 +101,10 @@ class IndexController extends Controller
             'status'     => 0
         ]);
 
-        $this->sendMessage($order->id, $total_sum);
+        $telegram_status = $this->sendMessage($order->id, $total_sum);
         $basket_items_builder->delete();
 
-        return $this->success(['message' => 'Заказ № '.$order->id.' успешно создан! Ждите звонка оператора.']);
+        return $this->success(['telegram_status' => $telegram_status, 'message' => 'Заказ № '.$order->id.' успешно создан! Ждите звонка оператора.']);
     }
 
     /**
@@ -119,7 +119,7 @@ class IndexController extends Controller
         $order_link = "/order/$id/edit";
 
         $url = "https://api.telegram.org/bot" . env('TELEGRAM_TOKEN') . "/sendMessage?parse_mode=HTML&chat_id=" . env('CHAT_ID');
-        $url = $url . "&text=Новый заказ на сумму ₴$total_sum: " . $_SERVER['HTTP_HOST'] . $order_link . ". \n\r" . auth()->user()->name;
+        $url = $url . "&text=" . auth()->user()->name . " Новый заказ на сумму ₴$total_sum: " . $_SERVER['HTTP_HOST'] . $order_link . ". ";
         $ch = curl_init();
         $optArray = array(
             CURLOPT_URL            => $url,
