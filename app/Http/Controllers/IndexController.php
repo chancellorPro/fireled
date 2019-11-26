@@ -15,6 +15,10 @@ class IndexController extends AbstractController
      */
     public function index()
     {
-        return redirect('/admin/login');
+        if(auth()->user()) {
+            return redirect('/product');
+        } else {
+            return redirect('/home');
+        }
     }
 }
