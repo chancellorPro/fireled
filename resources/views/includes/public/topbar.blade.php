@@ -1,5 +1,5 @@
 <!-- top navigation -->
-<div class="public top_nav">
+<div class="public top_nav" style="position: absolute;right: 5px;top: 5px;z-index: 10">
     <div class="nav_menu">
         @auth
             @include('common.buttons.add', [
