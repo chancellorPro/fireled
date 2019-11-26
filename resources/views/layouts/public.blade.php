@@ -32,7 +32,7 @@
         <div class="container body">
             <div class="header_wrapper">
                 @include('includes/public/topbar')
-{{--                <div class="icon public-head"></div>--}}
+                <div class="icon public-head"></div>
             </div>
 
             <div class="main_container">

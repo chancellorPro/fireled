@@ -22,6 +22,7 @@ html , body{
     padding: 3px;
     border: 1px solid silver;
     word-wrap: break-word;
+    border-radius: 3px;
 }
 
 .currency{
