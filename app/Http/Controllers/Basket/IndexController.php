@@ -37,9 +37,8 @@ class IndexController extends Controller
      */
     public function index(Request $request)
     {
-        return view('product.index', [
+        return view('basket.add', [
             'basket' => Basket::with('product.productFiles')->where(['user_id' => auth()->id()])->get(),
-
         ]);
     }
 
