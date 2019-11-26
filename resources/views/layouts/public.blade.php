@@ -32,6 +32,7 @@
         <div class="container body">
             <div class="header_wrapper">
                 @include('includes/public/topbar')
+                <div class="clearfix"></div>
                 <div class="icon public-head"></div>
             </div>
 
