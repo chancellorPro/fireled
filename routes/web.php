@@ -27,6 +27,7 @@ Route::post('/admin/login', ['uses' => 'CmsAuth\LoginController@login']);
 Route::post('/admin/logout', ['as' => 'admin.logout', 'uses' => 'CmsAuth\LoginController@logout']);
 
 Route::middleware(['auth'])->group(function () {
+    Route::get('basket', 'Basket\IndexController@index')->name('basket.index');
     Route::get('basket-add/{id}', 'Basket\IndexController@basketAdd')->name('basket.add');
     Route::post('basket-remove/{id}', 'Basket\IndexController@basketRemove')->name('basket.remove');
     Route::post('order-send', 'Basket\IndexController@orderSend')->name('order.send');

@@ -37,16 +37,9 @@ class IndexController extends Controller
      */
     public function index(Request $request)
     {
-
-        $data = $this->applyFilter(
-            $request,
-            Basket::oldest('id')
-        )->get();
-
         return view('product.index', [
-            'rows'   => $data,
-            'filter' => $this->getFilter(),
-            'boxes'  => arrayToKeyValue(config('presets.boxes'), 'id', 'name'),
+            'basket' => Basket::with('product.productFiles')->where(['user_id' => auth()->id()])->get(),
+
         ]);
     }
 

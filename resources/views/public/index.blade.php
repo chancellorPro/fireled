@@ -85,15 +85,14 @@
             <div class="pull-left asset asset-box" id="asset-{{$row->id}}">
                 <div class="image">
                     @if($row->productFiles->first())
-                    <img height="150" src="{{ Storage::url($row->productFiles->first()->url) }}"
+                    <img width="250" src="{{ Storage::url($row->productFiles->first()->url) }}"
                          alt="{{$row->name}} ">
                     @endif
                 </div>
-                <span>
-                    {{ isset($row->nlaAssets->category_id) ?
-                    $categories[$row->nlaAssets->category_id]->name : '' }}
-                </span>
-                <div><b>{{$row->name}}</b>
+                <div class="clearfix"></div>
+                <div style="width:252px;height:38px;overflow: hidden">{{$row->name}}</div>
+                <div class="clearfix"></div>
+                <div>
                     <div class="pull-right">{{$row->price}} USD</div>
                 </div>
                 <div class="title">
