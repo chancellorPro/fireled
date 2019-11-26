@@ -98,6 +98,7 @@ class IndexController extends Controller
             'user_id'    => auth()->user()->id,
             'order_data' => json_encode($basket_items->makeHidden('product')->toArray()),
             'total_sum'  => $total_sum,
+            'status'     => 0
         ]);
 
         $this->sendMessage($order->id, $total_sum);
