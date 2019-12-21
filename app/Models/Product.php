@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Models\ProductFile;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 /**
  * Class Product
@@ -25,6 +26,8 @@ class Product extends Model
     protected $fillable = [
         'name',
         'price',
+        'first_color',
+        'second_color',
         'description',
     ];
 
@@ -36,6 +39,27 @@ class Product extends Model
     public function productFiles()
     {
         return $this->hasMany(ProductFile::class);
+    }
+
+
+    /**
+     * firstColor
+     *
+     * @return HasOne
+     */
+    public function firstColor()
+    {
+        return $this->hasOne(Color::class, 'id', 'first_color');
+    }
+
+    /**
+     * secondColor
+     *
+     * @return HasOne
+     */
+    public function secondColor()
+    {
+        return $this->hasOne(Color::class, 'id', 'second_color');
     }
 
 }

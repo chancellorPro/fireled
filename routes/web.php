@@ -21,7 +21,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('set-phone', 'Basket\IndexController@setPhone')->name('set.phone');
 Route::post('save-phone', 'Basket\IndexController@savePhone')->name('save.phone');
 
-Route::get('/admin', 'AdminController@index');
+//Route::get('/admin', 'AdminController@index');
 Route::get('/admin/login', ['as' => 'admin.login', 'uses' => 'CmsAuth\LoginController@showLoginForm']);
 Route::post('/admin/login', ['uses' => 'CmsAuth\LoginController@login']);
 Route::post('/admin/logout', ['as' => 'admin.logout', 'uses' => 'CmsAuth\LoginController@logout']);
@@ -39,6 +39,8 @@ Route::middleware(['isCmsUser'])->group(function () {
     Route::resource('order', 'Order\IndexController');
     Route::post('product/update/{id}', 'Product\IndexController@update')->name('product.update');
     Route::resource('user', 'User\IndexController');
+    Route::resource('color', 'Color\IndexController')->except('update');
+    Route::post('color/update/{id}', 'Color\IndexController@update')->name('color.update');
 });
 
 Route::get('/home', 'HomeController@index')->name('home');

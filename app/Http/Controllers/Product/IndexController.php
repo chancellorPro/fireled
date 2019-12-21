@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Product;
 
 use App\Http\Controllers\Controller;
+use App\Models\Color;
 use App\Models\Product;
 use App\Models\ProductFile;
 use App\Services\FileService;
@@ -45,6 +46,7 @@ class IndexController extends Controller
 
         return view('product.index', [
             'rows'   => $data,
+            'colors' => Color::all(),
             'filter' => $this->getFilter(),
         ]);
     }
@@ -122,6 +124,7 @@ class IndexController extends Controller
     public function create()
     {
         return view('product.create', [
+            'colors' => Color::all(),
             'products' => Product::all(),
         ]);
     }
@@ -136,6 +139,7 @@ class IndexController extends Controller
     public function edit(int $id)
     {
         return view('product.edit', [
+            'colors' => Color::all(),
             'model'    => Product::find($id),
             'products' => Product::all(),
         ]);
@@ -151,6 +155,7 @@ class IndexController extends Controller
     public function show($id)
     {
         return view('product.edit', [
+            'colors' => Color::all(),
             'model'    => Product::find($id),
             'products' => Product::all(),
         ]);

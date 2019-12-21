@@ -23,6 +23,30 @@
     'label' => __('Description'),
 ])
 
+{{-- First color --}}
+@include('layouts.form-fields.select2', [
+    'name' => 'first_color',
+    'collection' => $colors,
+    'selected' => $currentModel->first_color ?? 0,
+    'id'=>'id',
+    'mult' => $mult ?? false,
+    'value'=>'name',
+    'label'=> __('First color'),
+    'addempty'=> true,
+])
+
+{{-- Second color --}}
+@include('layouts.form-fields.select2', [
+    'name' => 'second_color',
+    'collection' => $colors,
+    'selected' => $currentModel->second_color ?? 0,
+    'id'=>'id',
+    'mult' => $mult ?? false,
+    'value'=>'name',
+    'label'=> __('Second color'),
+    'addempty'=> true,
+])
+
 {{-- Preview --}}
 @include('layouts.form-fields.files', [
     'files'=> !empty($currentModel) ? $currentModel->productFiles : [],
