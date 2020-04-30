@@ -39,7 +39,7 @@
         "dropzone": "^5.5.1",
         "font-awesome": "^4.7.0",
         "inputmask": "^4.0.9",
-        "jquery": "^2.2.4",
+        "jquery": "^3.5.0",
         "moment": "^2.24.0",
         "raven-js": "^3.27.0",
         "sortablejs": "^1.8.1",
